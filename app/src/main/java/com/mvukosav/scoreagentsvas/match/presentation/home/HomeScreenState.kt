@@ -6,5 +6,5 @@ sealed class HomeScreenState {
 
     data object Loading : HomeScreenState()
     data class Data(val items: UiData) : HomeScreenState()
-    data class Error(val errorMessage: String) : HomeScreenState()
+    data class Error(val errorMessage: String, val refresh: () -> Unit) : HomeScreenState()
 }

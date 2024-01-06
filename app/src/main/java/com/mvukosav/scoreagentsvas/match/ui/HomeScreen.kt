@@ -12,27 +12,47 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.mvukosav.scoreagentsvas.match.presentation.home.HomeScreenState
+import com.mvukosav.scoreagentsvas.match.presentation.home.HomeScreenUiEvent
 import com.mvukosav.scoreagentsvas.match.presentation.home.HomeScreenViewModel
 import kotlinx.collections.immutable.ImmutableList
+import kotlinx.coroutines.flow.collectLatest
 
 @Composable
-fun HomeScreen(viewModel: HomeScreenViewModel = hiltViewModel()) {
+fun HomeScreen(
+    viewModel: HomeScreenViewModel,
+    navController: NavController
+) {
     val state by viewModel.state.collectAsState()
 
+    LaunchedEffect(key1 = true) {
+        viewModel.events.collectLatest {
+            when (it) {
+                is HomeScreenUiEvent.NavigateToMatchDetails -> {
+                    navController.navigate("match_details/?matchId=${it.matchId}")
+                    viewModel.events.value = null
+                }
+
+                null -> {}
+            }
+        }
+    }
     when (state) {
         is HomeScreenState.Data -> HomeScreenData(state = state as HomeScreenState.Data)
-        is HomeScreenState.Error -> {}
+        is HomeScreenState.Error -> ErrorScreen(state = state as HomeScreenState.Error)
         is HomeScreenState.Loading -> LoadingScreen()
     }
 }
@@ -46,7 +66,7 @@ fun HomeScreenData(state: HomeScreenState.Data) {
     ) {
         Text(
             text = "Posljednje ažurirano:${state.items.lastUpdate}",
-            modifier = Modifier.padding(start = 10.dp),
+            modifier = Modifier.padding(start = 10.dp, top = 10.dp),
             fontSize = 12.sp,
             color = Color.Gray
         )
@@ -61,9 +81,24 @@ fun LoadingScreen() {
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        CircularProgressIndicator()
+        CircularProgressIndicator(color = Color.Blue)
     }
 }
+
+@Composable
+fun ErrorScreen(state: HomeScreenState.Error) {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+
+        OutlinedButton(onClick = state.refresh, shape = RoundedCornerShape(4.dp)) {
+            Text(state.errorMessage + " Refresh?")
+        }
+    }
+}
+
 
 @Composable
 fun Matches(state: UiData) {
@@ -84,7 +119,11 @@ fun Matches(state: UiData) {
                             .fillMaxWidth()
                             .padding(top = 5.dp)
                     ) {
-                        Text(text = it.league, modifier = Modifier.padding(start = 10.dp))
+                        Text(
+                            text = it.league,
+                            modifier = Modifier.padding(start = 10.dp),
+                            fontWeight = FontWeight.Bold
+                        )
                     }
                     it.match.forEach {
                         MatchItem(item = it)

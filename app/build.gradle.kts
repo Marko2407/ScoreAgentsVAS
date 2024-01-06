@@ -1,3 +1,5 @@
+import org.gradle.internal.impldep.bsh.commands.dir
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -65,6 +67,9 @@ dependencies {
     //Hilt
     implementation("com.google.dagger:hilt-android:2.48")
     implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
+
+    implementation(files("libs/jade-4.6.0.jar"))
+
     kapt("com.google.dagger:hilt-android-compiler:2.48")
     kapt("androidx.hilt:hilt-compiler:1.1.0")
 
@@ -81,6 +86,14 @@ dependencies {
 
     implementation("org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.5")
     implementation("com.google.accompanist:accompanist-placeholder-material:0.32.0")
+//
+//    //JADE
+//    implementation("com.github.Lamba92", "jade-modern-agent", "1.2.2")
+//    implementation("commons-codec", "commons-codec", "1.9")
+//    implementation("com.tilab.jade", "jade", "4.6.0")
+
+    //notification
+    implementation("com.google.accompanist:accompanist-permissions:0.31.1-alpha")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

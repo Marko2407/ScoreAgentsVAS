@@ -1,6 +1,11 @@
 package com.mvukosav.scoreagentsvas.service
 
-import com.mvukosav.scoreagentsvas.match.domain.model.Match
+import com.mvukosav.scoreagentsvas.match.domain.model.livescores.LivescoresDTH
+import com.mvukosav.scoreagentsvas.match.domain.model.matchdetails.MatchDetailDto
+import com.mvukosav.scoreagentsvas.match.domain.model.matchdetails.MatchPreviewContent
+import com.mvukosav.scoreagentsvas.match.domain.model.matchpreview.MatchPreviewDTO
+import com.mvukosav.scoreagentsvas.match.domain.model.prematches.Match
+import com.mvukosav.scoreagentsvas.match.domain.model.prematches.MatchPreview
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -9,17 +14,20 @@ interface ScoreServices {
     @GET("match-previews-upcoming")
     suspend fun getAllPreMatches(): Match?
 
-    @GET("livescores")
-    suspend fun getLiveScores(): Any
+    @GET("livescores/")
+    suspend fun getLiveScores(): LivescoresDTH
 
-    @GET("league")
+    @GET("league/")
     suspend fun getLeague(): Any
 
     @GET("country")
     suspend fun getCountries(): Any
 
     @GET("match-preview/")
-    suspend fun getMatchById(@Query("match_id") match_id: String): Any
+    suspend fun getPreviewMatchById(@Query("match_id") match_id: Int): MatchPreviewDTO
+
+    @GET("match/")
+    suspend fun getMatchById(@Query("match_id") match_id: Int): MatchDetailDto
 
     @GET("matches/")
     suspend fun getMatchesByLeagueId(@Query("league_id") league_id: String): Any

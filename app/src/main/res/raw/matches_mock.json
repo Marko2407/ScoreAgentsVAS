@@ -1,1 +1,1954 @@
-{"count":101,"updated_at":"2024-01-01T02:50:30Z","results":[{"league_id":208,"league_name":"A-League","is_cup":false,"country":{"id":5,"name":"australia"},"match_previews":[{"id":731253,"date":"04/01/2024","time":"08:45","word_count":675,"excitement_rating":9.13,"teams":{"home":{"id":3872,"name":"Adelaide United"},"away":{"id":3874,"name":"Wellington Phoenix"}}},{"id":731257,"date":"05/01/2024","time":"08:45","word_count":679,"excitement_rating":6.44,"teams":{"home":{"id":3879,"name":"Macarthur"},"away":{"id":3875,"name":"Newcastle Jets"}}}]},{"league_id":223,"league_name":"First Division","is_cup":false,"country":{"id":24,"name":"cyprus"},"match_previews":[{"id":750568,"date":"02/01/2024","time":"15:00","word_count":419,"excitement_rating":6.74,"teams":{"home":{"id":2922,"name":"Apollon"},"away":{"id":3343,"name":"APOEL"}}},{"id":750567,"date":"02/01/2024","time":"17:00","word_count":498,"excitement_rating":7.31,"teams":{"home":{"id":3496,"name":"Anorthosis"},"away":{"id":4081,"name":"Karmiotissa"}}},{"id":750569,"date":"02/01/2024","time":"17:00","word_count":409,"excitement_rating":4.87,"teams":{"home":{"id":3629,"name":"Omonia Nicosia"},"away":{"id":3781,"name":"AEL"}}},{"id":750564,"date":"03/01/2024","time":"17:00","word_count":543,"excitement_rating":5.81,"teams":{"home":{"id":3349,"name":"Ethnikos Achna"},"away":{"id":4079,"name":"Nea Salamis"}}},{"id":750557,"date":"03/01/2024","time":"17:00","word_count":701,"excitement_rating":6.71,"teams":{"home":{"id":2923,"name":"Pafos"},"away":{"id":2951,"name":"Aris Limassol"}}},{"id":750570,"date":"03/01/2024","time":"17:00","word_count":638,"excitement_rating":6.65,"teams":{"home":{"id":5062,"name":"Othellos"},"away":{"id":2905,"name":"AEK Larnaca"}}},{"id":750561,"date":"04/01/2024","time":"17:00","word_count":425,"excitement_rating":5.65,"teams":{"home":{"id":5061,"name":"AE Zakakiou"},"away":{"id":3345,"name":"Doxa"}}}]},{"league_id":227,"league_name":"Premier League","is_cup":false,"country":{"id":82,"name":"egypt"},"match_previews":[{"id":910370,"date":"01/01/2024","time":"14:00","word_count":342,"excitement_rating":6.71,"teams":{"home":{"id":4126,"name":"El Dakhleya"},"away":{"id":4120,"name":"Al Ittihad"}}},{"id":910368,"date":"01/01/2024","time":"17:00","word_count":546,"excitement_rating":7.26,"teams":{"home":{"id":4113,"name":"Al Masry"},"away":{"id":4116,"name":"Ismaily"}}},{"id":910372,"date":"02/01/2024","time":"14:00","word_count":448,"excitement_rating":8.89,"teams":{"home":{"id":4112,"name":"Pyramids"},"away":{"id":4123,"name":"Smouha"}}},{"id":910369,"date":"02/01/2024","time":"14:00","word_count":405,"excitement_rating":6.61,"teams":{"home":{"id":4134,"name":"Pharco"},"away":{"id":4110,"name":"Al Ahly"}}},{"id":910366,"date":"02/01/2024","time":"17:00","word_count":411,"excitement_rating":6.48,"teams":{"home":{"id":4130,"name":"Ceramica Cleopatra"},"away":{"id":4111,"name":"Zamalek"}}},{"id":910367,"date":"02/01/2024","time":"17:00","word_count":462,"excitement_rating":7.06,"teams":{"home":{"id":4133,"name":"Future"},"away":{"id":4124,"name":"El Gouna"}}}]},{"league_id":229,"league_name":"Championship","is_cup":false,"country":{"id":8,"name":"england"},"match_previews":[{"id":762506,"date":"01/01/2024","time":"12:30","word_count":415,"excitement_rating":6.34,"teams":{"home":{"id":3073,"name":"Sunderland"},"away":{"id":4154,"name":"Preston North End"}}},{"id":762475,"date":"01/01/2024","time":"15:00","word_count":443,"excitement_rating":6.55,"teams":{"home":{"id":4151,"name":"Bristol City"},"away":{"id":3308,"name":"Millwall"}}},{"id":762479,"date":"01/01/2024","time":"15:00","word_count":541,"excitement_rating":6.48,"teams":{"home":{"id":4147,"name":"Leeds United"},"away":{"id":3063,"name":"Birmingham City"}}},{"id":762482,"date":"01/01/2024","time":"15:00","word_count":532,"excitement_rating":7.12,"teams":{"home":{"id":3768,"name":"Leicester City"},"away":{"id":4141,"name":"Huddersfield Town"}}},{"id":762486,"date":"01/01/2024","time":"15:00","word_count":481,"excitement_rating":6.83,"teams":{"home":{"id":4150,"name":"Middlesbrough"},"away":{"id":4161,"name":"Coventry City"}}},{"id":762488,"date":"01/01/2024","time":"15:00","word_count":435,"excitement_rating":7.03,"teams":{"home":{"id":3311,"name":"Norwich City"},"away":{"id":4142,"name":"Southampton"}}},{"id":762493,"date":"01/01/2024","time":"15:00","word_count":421,"excitement_rating":5.82,"teams":{"home":{"id":4164,"name":"Plymouth Argyle"},"away":{"id":2826,"name":"Watford"}}},{"id":762496,"date":"01/01/2024","time":"15:00","word_count":350,"excitement_rating":5.52,"teams":{"home":{"id":4155,"name":"Queens Park Rangers"},"away":{"id":3285,"name":"Cardiff City"}}},{"id":762508,"date":"01/01/2024","time":"15:00","word_count":518,"excitement_rating":6.12,"teams":{"home":{"id":3318,"name":"Swansea City"},"away":{"id":4144,"name":"West Bromwich Albion"}}},{"id":762502,"date":"01/01/2024","time":"15:00","word_count":449,"excitement_rating":5.25,"teams":{"home":{"id":4143,"name":"Stoke City"},"away":{"id":4157,"name":"Ipswich Town"}}},{"id":762473,"date":"01/01/2024","time":"15:00","word_count":431,"excitement_rating":5.68,"teams":{"home":{"id":2908,"name":"Blackburn Rovers"},"away":{"id":3061,"name":"Rotherham United"}}},{"id":762499,"date":"01/01/2024","time":"17:15","word_count":450,"excitement_rating":6.18,"teams":{"home":{"id":4152,"name":"Sheffield Wednesday"},"away":{"id":4153,"name":"Hull City"}}}]},{"league_id":230,"league_name":"FA Cup","is_cup":false,"country":{"id":8,"name":"england"},"match_previews":[{"id":911750,"date":"04/01/2024","time":"20:00","word_count":528,"excitement_rating":7.4,"teams":{"home":{"id":4140,"name":"Crystal Palace"},"away":{"id":4139,"name":"Everton"}}},{"id":911743,"date":"05/01/2024","time":"20:00","word_count":373,"excitement_rating":8.52,"teams":{"home":{"id":2909,"name":"Tottenham Hotspur"},"away":{"id":3104,"name":"Burnley"}}}]},{"league_id":231,"league_name":"League One","is_cup":false,"country":{"id":8,"name":"england"},"match_previews":[{"id":767911,"date":"01/01/2024","time":"15:00","word_count":471,"excitement_rating":6.18,"teams":{"home":{"id":4159,"name":"Barnsley"},"away":{"id":3320,"name":"Wigan Athletic"}}},{"id":767915,"date":"01/01/2024","time":"15:00","word_count":480,"excitement_rating":6.12,"teams":{"home":{"id":3309,"name":"Blackpool"},"away":{"id":4177,"name":"Lincoln City"}}},{"id":767918,"date":"01/01/2024","time":"15:00","word_count":422,"excitement_rating":6.52,"teams":{"home":{"id":4156,"name":"Bolton Wanderers"},"away":{"id":3305,"name":"Burton Albion"}}},{"id":767921,"date":"01/01/2024","time":"15:00","word_count":539,"excitement_rating":7.37,"teams":{"home":{"id":4181,"name":"Cambridge United"},"away":{"id":4196,"name":"Leyton Orient"}}},{"id":767924,"date":"01/01/2024","time":"15:00","word_count":412,"excitement_rating":5.1,"teams":{"home":{"id":4189,"name":"Carlisle United"},"away":{"id":4184,"name":"Port Vale"}}},{"id":767926,"date":"01/01/2024","time":"15:00","word_count":498,"excitement_rating":6.5,"teams":{"home":{"id":4160,"name":"Charlton Athletic"},"away":{"id":4168,"name":"Oxford United"}}},{"id":767930,"date":"01/01/2024","time":"15:00","word_count":462,"excitement_rating":9.54,"teams":{"home":{"id":3064,"name":"Derby County"},"away":{"id":4163,"name":"Peterborough United"}}},{"id":767937,"date":"01/01/2024","time":"15:00","word_count":433,"excitement_rating":8.79,"teams":{"home":{"id":4165,"name":"Portsmouth"},"away":{"id":4188,"name":"Stevenage"}}},{"id":767941,"date":"01/01/2024","time":"15:00","word_count":466,"excitement_rating":7.68,"teams":{"home":{"id":3430,"name":"Reading"},"away":{"id":4183,"name":"Exeter City"}}},{"id":767943,"date":"01/01/2024","time":"15:00","word_count":394,"excitement_rating":4.8,"teams":{"home":{"id":4172,"name":"Shrewsbury Town"},"away":{"id":4167,"name":"Fleetwood Town"}}},{"id":767948,"date":"01/01/2024","time":"15:00","word_count":425,"excitement_rating":6.0,"teams":{"home":{"id":4162,"name":"Wycombe Wanderers"},"away":{"id":3303,"name":"Bristol Rovers"}}},{"id":767933,"date":"01/01/2024","time":"15:00","word_count":437,"excitement_rating":6.0,"teams":{"home":{"id":2790,"name":"Northampton Town"},"away":{"id":3453,"name":"Cheltenham Town"}}}]},{"league_id":232,"league_name":"League Two","is_cup":false,"country":{"id":8,"name":"england"},"match_previews":[{"id":769187,"date":"01/01/2024","time":"15:00","word_count":383,"excitement_rating":5.42,"teams":{"home":{"id":3450,"name":"Grimsby Town"},"away":{"id":4175,"name":"Walsall"}}},{"id":769189,"date":"01/01/2024","time":"15:00","word_count":435,"excitement_rating":7.21,"teams":{"home":{"id":4182,"name":"Morecambe"},"away":{"id":2701,"name":"Harrogate Town"}}},{"id":769174,"date":"01/01/2024","time":"15:00","word_count":398,"excitement_rating":5.19,"teams":{"home":{"id":3066,"name":"Colchester United"},"away":{"id":4169,"name":"Gillingham"}}},{"id":769175,"date":"01/01/2024","time":"15:00","word_count":432,"excitement_rating":6.48,"teams":{"home":{"id":4191,"name":"Crawley Town"},"away":{"id":2713,"name":"Swindon Town"}}},{"id":769181,"date":"01/01/2024","time":"15:00","word_count":408,"excitement_rating":6.51,"teams":{"home":{"id":4180,"name":"Crewe Alexandra"},"away":{"id":3075,"name":"Bradford City"}}},{"id":769182,"date":"01/01/2024","time":"15:00","word_count":281,"excitement_rating":5.59,"teams":{"home":{"id":4166,"name":"Doncaster Rovers"},"away":{"id":4178,"name":"Milton Keynes Dons"}}},{"id":769183,"date":"01/01/2024","time":"15:00","word_count":415,"excitement_rating":5.7,"teams":{"home":{"id":4185,"name":"Forest Green Rovers"},"away":{"id":4174,"name":"AFC Wimbledon"}}},{"id":769191,"date":"01/01/2024","time":"15:00","word_count":503,"excitement_rating":9.19,"teams":{"home":{"id":4200,"name":"Stockport County"},"away":{"id":4187,"name":"Mansfield Town"}}},{"id":769193,"date":"01/01/2024","time":"15:00","word_count":349,"excitement_rating":6.18,"teams":{"home":{"id":4198,"name":"Sutton United"},"away":{"id":3065,"name":"Newport County"}}},{"id":769196,"date":"01/01/2024","time":"15:00","word_count":488,"excitement_rating":6.83,"teams":{"home":{"id":4179,"name":"Tranmere Rovers"},"away":{"id":4193,"name":"Notts County"}}},{"id":769173,"date":"01/01/2024","time":"15:00","word_count":458,"excitement_rating":6.18,"teams":{"home":{"id":4170,"name":"Accrington Stanley"},"away":{"id":4195,"name":"Salford City"}}},{"id":769198,"date":"01/01/2024","time":"15:00","word_count":453,"excitement_rating":9.18,"teams":{"home":{"id":5063,"name":"Wrexham"},"away":{"id":4197,"name":"Barrow"}}}]},{"league_id":228,"league_name":"Premier League","is_cup":false,"country":{"id":8,"name":"england"},"match_previews":[{"id":768408,"date":"01/01/2024","time":"20:00","word_count":509,"excitement_rating":6.03,"teams":{"home":{"id":4138,"name":"Liverpool"},"away":{"id":3071,"name":"Newcastle United"}}},{"id":768427,"date":"02/01/2024","time":"19:30","word_count":416,"excitement_rating":7.73,"teams":{"home":{"id":3059,"name":"West Ham United"},"away":{"id":3200,"name":"Brighton & Hove Albion"}}}]},{"league_id":238,"league_name":"Coupe de France","is_cup":false,"country":{"id":9,"name":"france"},"match_previews":[{"id":911822,"date":"05/01/2024","time":"17:00","word_count":346,"excitement_rating":4.71,"teams":{"home":{"id":9716,"name":"Feignies Aulnoye"},"away":{"id":4257,"name":"Quevilly Rouen"}}},{"id":911846,"date":"05/01/2024","time":"17:00","word_count":375,"excitement_rating":6.11,"teams":{"home":{"id":9920,"name":"Challans"},"away":{"id":4252,"name":"Rodez"}}},{"id":911823,"date":"05/01/2024","time":"17:00","word_count":306,"excitement_rating":5.33,"teams":{"home":{"id":4251,"name":"Chambly-Oise"},"away":{"id":9835,"name":"Racing"}}}]},{"league_id":245,"league_name":"Super League 1","is_cup":false,"country":{"id":12,"name":"greece"},"match_previews":[{"id":801639,"date":"03/01/2024","time":"15:00","word_count":678,"excitement_rating":8.95,"teams":{"home":{"id":3111,"name":"Lamia"},"away":{"id":3544,"name":"Olympiakos"}}},{"id":801621,"date":"03/01/2024","time":"17:00","word_count":699,"excitement_rating":8.87,"teams":{"home":{"id":3181,"name":"AEK Athens"},"away":{"id":2906,"name":"Volos NFC"}}}]},{"league_id":252,"league_name":"Ligat Ha'al","is_cup":false,"country":{"id":18,"name":"israel"},"match_previews":[{"id":818499,"date":"02/01/2024","time":"17:00","word_count":389,"excitement_rating":5.55,"teams":{"home":{"id":4405,"name":"Maccabi Bnei Raina"},"away":{"id":3020,"name":"Maccabi Netanya"}}},{"id":818502,"date":"02/01/2024","time":"18:00","word_count":480,"excitement_rating":8.61,"teams":{"home":{"id":3329,"name":"Hapoel Hadera"},"away":{"id":3321,"name":"Hapoel Be'er Sheva"}}},{"id":818490,"date":"03/01/2024","time":"17:00","word_count":697,"excitement_rating":6.23,"teams":{"home":{"id":3323,"name":"Hapoel Jerusalem"},"away":{"id":4402,"name":"Maccabi Petah Tikva"}}},{"id":818495,"date":"03/01/2024","time":"17:45","word_count":616,"excitement_rating":6.71,"teams":{"home":{"id":3331,"name":"Hapoel Tel Aviv"},"away":{"id":4403,"name":"Bnei Sakhnin"}}},{"id":818504,"date":"03/01/2024","time":"18:00","word_count":663,"excitement_rating":6.12,"teams":{"home":{"id":3333,"name":"Ashdod"},"away":{"id":3384,"name":"Maccabi Tel Aviv"}}},{"id":818492,"date":"03/01/2024","time":"18:15","word_count":451,"excitement_rating":5.88,"teams":{"home":{"id":3334,"name":"Hapoel Petah Tikva"},"away":{"id":3201,"name":"Maccabi Haifa"}}},{"id":818505,"date":"04/01/2024","time":"18:30","word_count":466,"excitement_rating":5.38,"teams":{"home":{"id":2945,"name":"Hapoel Haifa"},"away":{"id":3326,"name":"Beitar Jerusalem"}}}]},{"league_id":255,"league_name":"Coppa Italia","is_cup":false,"country":{"id":6,"name":"italy"},"match_previews":[{"id":911088,"date":"02/01/2024","time":"20:00","word_count":316,"excitement_rating":5.75,"teams":{"home":{"id":4407,"name":"AC Milan"},"away":{"id":4410,"name":"Cagliari"}}},{"id":911083,"date":"03/01/2024","time":"20:00","word_count":467,"excitement_rating":7.1,"teams":{"home":{"id":3767,"name":"Roma"},"away":{"id":2981,"name":"Cremonese"}}}]},{"league_id":253,"league_name":"Serie A","is_cup":false,"country":{"id":6,"name":"italy"},"match_previews":[{"id":819257,"date":"05/01/2024","time":"19:45","word_count":484,"excitement_rating":5.65,"teams":{"home":{"id":2820,"name":"Bologna"},"away":{"id":4411,"name":"Genoa"}}}]},{"league_id":272,"league_name":"Premiership","is_cup":false,"country":{"id":42,"name":"northern ireland"},"match_previews":[{"id":844948,"date":"02/01/2024","time":"19:45","word_count":485,"excitement_rating":5.97,"teams":{"home":{"id":3608,"name":"Crusaders"},"away":{"id":3587,"name":"Linfield"}}}]},{"league_id":280,"league_name":"Primeira Liga","is_cup":false,"country":{"id":41,"name":"portugal"},"match_previews":[{"id":853098,"date":"05/01/2024","time":"18:45","word_count":708,"excitement_rating":6.72,"teams":{"home":{"id":4716,"name":"Sporting Lisbon"},"away":{"id":4724,"name":"Estoril"}}},{"id":853119,"date":"05/01/2024","time":"20:45","word_count":618,"excitement_rating":8.71,"teams":{"home":{"id":3370,"name":"Boavista"},"away":{"id":3216,"name":"Porto"}}}]},{"league_id":288,"league_name":"Saudi League","is_cup":false,"country":{"id":63,"name":"saudi arabia"},"match_previews":[{"id":864335,"date":"07/02/2024","time":"18:00","word_count":421,"excitement_rating":4.93,"teams":{"home":{"id":2850,"name":"Al Tai"},"away":{"id":4797,"name":"Al Ittihad"}}}]},{"league_id":290,"league_name":"Championship","is_cup":false,"country":{"id":21,"name":"scotland"},"match_previews":[{"id":865059,"date":"02/01/2024","time":"15:00","word_count":495,"excitement_rating":6.97,"teams":{"home":{"id":3480,"name":"Arbroath"},"away":{"id":3598,"name":"Dundee United"}}},{"id":865070,"date":"02/01/2024","time":"15:00","word_count":457,"excitement_rating":6.31,"teams":{"home":{"id":4813,"name":"Partick Thistle"},"away":{"id":3202,"name":"Queen's Park"}}},{"id":865057,"date":"02/01/2024","time":"15:00","word_count":389,"excitement_rating":5.76,"teams":{"home":{"id":5079,"name":"Airdrieonians"},"away":{"id":4810,"name":"Inverness CT"}}},{"id":865064,"date":"02/01/2024","time":"15:00","word_count":406,"excitement_rating":7.03,"teams":{"home":{"id":4814,"name":"Dunfermline Athletic"},"away":{"id":3319,"name":"Raith Rovers"}}},{"id":865067,"date":"02/01/2024","time":"15:00","word_count":452,"excitement_rating":7.42,"teams":{"home":{"id":4812,"name":"Greenock Morton"},"away":{"id":4811,"name":"Ayr United"}}},{"id":865084,"date":"05/01/2024","time":"19:45","word_count":521,"excitement_rating":5.94,"teams":{"home":{"id":3202,"name":"Queen's Park"},"away":{"id":4814,"name":"Dunfermline Athletic"}}}]},{"league_id":289,"league_name":"Premiership","is_cup":false,"country":{"id":21,"name":"scotland"},"match_previews":[{"id":870442,"date":"02/01/2024","time":"15:00","word_count":398,"excitement_rating":6.12,"teams":{"home":{"id":2782,"name":"Ross County"},"away":{"id":2717,"name":"Aberdeen"}}},{"id":870431,"date":"02/01/2024","time":"15:00","word_count":425,"excitement_rating":5.5,"teams":{"home":{"id":2714,"name":"Dundee"},"away":{"id":3475,"name":"St. Johnstone"}}},{"id":870434,"date":"02/01/2024","time":"15:00","word_count":336,"excitement_rating":5.62,"teams":{"home":{"id":3782,"name":"Hibernian"},"away":{"id":3481,"name":"Motherwell"}}},{"id":870438,"date":"02/01/2024","time":"15:00","word_count":338,"excitement_rating":4.87,"teams":{"home":{"id":3407,"name":"Livingston"},"away":{"id":3310,"name":"Hearts"}}},{"id":870439,"date":"02/01/2024","time":"15:00","word_count":434,"excitement_rating":6.32,"teams":{"home":{"id":2801,"name":"Rangers"},"away":{"id":4808,"name":"Kilmarnock"}}},{"id":870444,"date":"02/01/2024","time":"17:00","word_count":411,"excitement_rating":6.09,"teams":{"home":{"id":4809,"name":"St. Mirren"},"away":{"id":2827,"name":"Celtic"}}}]},{"league_id":297,"league_name":"La Liga","is_cup":false,"country":{"id":60,"name":"spain"},"match_previews":[{"id":879149,"date":"02/01/2024","time":"16:00","word_count":418,"excitement_rating":5.88,"teams":{"home":{"id":4891,"name":"Getafe"},"away":{"id":2910,"name":"Rayo Vallecano"}}},{"id":879177,"date":"02/01/2024","time":"18:15","word_count":467,"excitement_rating":5.19,"teams":{"home":{"id":4885,"name":"Real Sociedad"},"away":{"id":4892,"name":"Alaves"}}},{"id":879152,"date":"02/01/2024","time":"20:30","word_count":478,"excitement_rating":6.28,"teams":{"home":{"id":4890,"name":"Valencia"},"away":{"id":2907,"name":"Villarreal"}}},{"id":879172,"date":"03/01/2024","time":"16:00","word_count":457,"excitement_rating":3.93,"teams":{"home":{"id":3369,"name":"Granada"},"away":{"id":4889,"name":"Cadiz"}}},{"id":879174,"date":"03/01/2024","time":"18:15","word_count":661,"excitement_rating":6.64,"teams":{"home":{"id":4883,"name":"Real Madrid"},"away":{"id":2802,"name":"Mallorca"}}},{"id":879166,"date":"03/01/2024","time":"18:15","word_count":568,"excitement_rating":6.53,"teams":{"home":{"id":2911,"name":"Celta Vigo"},"away":{"id":4886,"name":"Real Betis"}}},{"id":879162,"date":"03/01/2024","time":"20:30","word_count":606,"excitement_rating":8.85,"teams":{"home":{"id":2798,"name":"Girona"},"away":{"id":4882,"name":"Atletico Madrid"}}},{"id":879156,"date":"04/01/2024","time":"16:00","word_count":470,"excitement_rating":5.16,"teams":{"home":{"id":4888,"name":"Osasuna"},"away":{"id":4898,"name":"Almeria"}}},{"id":879159,"date":"04/01/2024","time":"18:15","word_count":505,"excitement_rating":5.16,"teams":{"home":{"id":3019,"name":"Sevilla"},"away":{"id":4887,"name":"Athletic Bilbao"}}},{"id":879164,"date":"04/01/2024","time":"20:30","word_count":399,"excitement_rating":5.12,"teams":{"home":{"id":4903,"name":"Las Palmas"},"away":{"id":4884,"name":"Barcelona"}}}]},{"league_id":305,"league_name":"Super Lig","is_cup":false,"country":{"id":19,"name":"turkey"},"match_previews":[{"id":885719,"date":"05/01/2024","time":"14:00","word_count":430,"excitement_rating":5.25,"teams":{"home":{"id":3018,"name":"Gaziantep FK"},"away":{"id":5089,"name":"Pendikspor"}}},{"id":885726,"date":"05/01/2024","time":"17:00","word_count":603,"excitement_rating":7.17,"teams":{"home":{"id":3069,"name":"Besiktas"},"away":{"id":3013,"name":"Kasimpasa"}}},{"id":885722,"date":"05/01/2024","time":"17:00","word_count":691,"excitement_rating":6.82,"teams":{"home":{"id":3284,"name":"Antalyaspor"},"away":{"id":3346,"name":"Alanyaspor"}}}]},{"league_id":309,"league_name":"Premier League","is_cup":false,"country":{"id":50,"name":"wales"},"match_previews":[{"id":897394,"date":"05/01/2024","time":"20:00","word_count":489,"excitement_rating":6.74,"teams":{"home":{"id":5045,"name":"Aberystwyth Town"},"away":{"id":5092,"name":"Colwyn Bay"}}},{"id":897400,"date":"06/01/2024","time":"14:30","word_count":443,"excitement_rating":6.12,"teams":{"home":{"id":5042,"name":"Barry Town United"},"away":{"id":3612,"name":"Newtown"}}}]}]}
+{
+  "count": 101,
+  "updated_at": "2024-01-01T02:50:30Z",
+  "results": [
+    {
+      "league_id": 208,
+      "league_name": "A-League",
+      "is_cup": false,
+      "country": {
+        "id": 5,
+        "name": "australia"
+      },
+      "match_previews": [
+        {
+          "id": 731253,
+          "date": "04/01/2024",
+          "time": "08:45",
+          "word_count": 675,
+          "excitement_rating": 9.13,
+          "teams": {
+            "home": {
+              "id": 3872,
+              "name": "Adelaide United"
+            },
+            "away": {
+              "id": 3874,
+              "name": "Wellington Phoenix"
+            }
+          }
+        },
+        {
+          "id": 731257,
+          "date": "05/01/2024",
+          "time": "08:45",
+          "word_count": 679,
+          "excitement_rating": 6.44,
+          "teams": {
+            "home": {
+              "id": 3879,
+              "name": "Macarthur"
+            },
+            "away": {
+              "id": 3875,
+              "name": "Newcastle Jets"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "league_id": 223,
+      "league_name": "First Division",
+      "is_cup": false,
+      "country": {
+        "id": 24,
+        "name": "cyprus"
+      },
+      "match_previews": [
+        {
+          "id": 750568,
+          "date": "02/01/2024",
+          "time": "15:00",
+          "word_count": 419,
+          "excitement_rating": 6.74,
+          "teams": {
+            "home": {
+              "id": 2922,
+              "name": "Apollon"
+            },
+            "away": {
+              "id": 3343,
+              "name": "APOEL"
+            }
+          }
+        },
+        {
+          "id": 750567,
+          "date": "02/01/2024",
+          "time": "17:00",
+          "word_count": 498,
+          "excitement_rating": 7.31,
+          "teams": {
+            "home": {
+              "id": 3496,
+              "name": "Anorthosis"
+            },
+            "away": {
+              "id": 4081,
+              "name": "Karmiotissa"
+            }
+          }
+        },
+        {
+          "id": 750569,
+          "date": "02/01/2024",
+          "time": "17:00",
+          "word_count": 409,
+          "excitement_rating": 4.87,
+          "teams": {
+            "home": {
+              "id": 3629,
+              "name": "Omonia Nicosia"
+            },
+            "away": {
+              "id": 3781,
+              "name": "AEL"
+            }
+          }
+        },
+        {
+          "id": 750564,
+          "date": "03/01/2024",
+          "time": "17:00",
+          "word_count": 543,
+          "excitement_rating": 5.81,
+          "teams": {
+            "home": {
+              "id": 3349,
+              "name": "Ethnikos Achna"
+            },
+            "away": {
+              "id": 4079,
+              "name": "Nea Salamis"
+            }
+          }
+        },
+        {
+          "id": 750557,
+          "date": "03/01/2024",
+          "time": "17:00",
+          "word_count": 701,
+          "excitement_rating": 6.71,
+          "teams": {
+            "home": {
+              "id": 2923,
+              "name": "Pafos"
+            },
+            "away": {
+              "id": 2951,
+              "name": "Aris Limassol"
+            }
+          }
+        },
+        {
+          "id": 750570,
+          "date": "03/01/2024",
+          "time": "17:00",
+          "word_count": 638,
+          "excitement_rating": 6.65,
+          "teams": {
+            "home": {
+              "id": 5062,
+              "name": "Othellos"
+            },
+            "away": {
+              "id": 2905,
+              "name": "AEK Larnaca"
+            }
+          }
+        },
+        {
+          "id": 750561,
+          "date": "04/01/2024",
+          "time": "17:00",
+          "word_count": 425,
+          "excitement_rating": 5.65,
+          "teams": {
+            "home": {
+              "id": 5061,
+              "name": "AE Zakakiou"
+            },
+            "away": {
+              "id": 3345,
+              "name": "Doxa"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "league_id": 227,
+      "league_name": "Premier League",
+      "is_cup": false,
+      "country": {
+        "id": 82,
+        "name": "egypt"
+      },
+      "match_previews": [
+        {
+          "id": 910370,
+          "date": "01/01/2024",
+          "time": "14:00",
+          "word_count": 342,
+          "excitement_rating": 6.71,
+          "teams": {
+            "home": {
+              "id": 4126,
+              "name": "El Dakhleya"
+            },
+            "away": {
+              "id": 4120,
+              "name": "Al Ittihad"
+            }
+          }
+        },
+        {
+          "id": 910368,
+          "date": "01/01/2024",
+          "time": "17:00",
+          "word_count": 546,
+          "excitement_rating": 7.26,
+          "teams": {
+            "home": {
+              "id": 4113,
+              "name": "Al Masry"
+            },
+            "away": {
+              "id": 4116,
+              "name": "Ismaily"
+            }
+          }
+        },
+        {
+          "id": 910372,
+          "date": "02/01/2024",
+          "time": "14:00",
+          "word_count": 448,
+          "excitement_rating": 8.89,
+          "teams": {
+            "home": {
+              "id": 4112,
+              "name": "Pyramids"
+            },
+            "away": {
+              "id": 4123,
+              "name": "Smouha"
+            }
+          }
+        },
+        {
+          "id": 910369,
+          "date": "02/01/2024",
+          "time": "14:00",
+          "word_count": 405,
+          "excitement_rating": 6.61,
+          "teams": {
+            "home": {
+              "id": 4134,
+              "name": "Pharco"
+            },
+            "away": {
+              "id": 4110,
+              "name": "Al Ahly"
+            }
+          }
+        },
+        {
+          "id": 910366,
+          "date": "02/01/2024",
+          "time": "17:00",
+          "word_count": 411,
+          "excitement_rating": 6.48,
+          "teams": {
+            "home": {
+              "id": 4130,
+              "name": "Ceramica Cleopatra"
+            },
+            "away": {
+              "id": 4111,
+              "name": "Zamalek"
+            }
+          }
+        },
+        {
+          "id": 910367,
+          "date": "02/01/2024",
+          "time": "17:00",
+          "word_count": 462,
+          "excitement_rating": 7.06,
+          "teams": {
+            "home": {
+              "id": 4133,
+              "name": "Future"
+            },
+            "away": {
+              "id": 4124,
+              "name": "El Gouna"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "league_id": 229,
+      "league_name": "Championship",
+      "is_cup": false,
+      "country": {
+        "id": 8,
+        "name": "england"
+      },
+      "match_previews": [
+        {
+          "id": 762506,
+          "date": "01/01/2024",
+          "time": "12:30",
+          "word_count": 415,
+          "excitement_rating": 6.34,
+          "teams": {
+            "home": {
+              "id": 3073,
+              "name": "Sunderland"
+            },
+            "away": {
+              "id": 4154,
+              "name": "Preston North End"
+            }
+          }
+        },
+        {
+          "id": 762475,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 443,
+          "excitement_rating": 6.55,
+          "teams": {
+            "home": {
+              "id": 4151,
+              "name": "Bristol City"
+            },
+            "away": {
+              "id": 3308,
+              "name": "Millwall"
+            }
+          }
+        },
+        {
+          "id": 762479,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 541,
+          "excitement_rating": 6.48,
+          "teams": {
+            "home": {
+              "id": 4147,
+              "name": "Leeds United"
+            },
+            "away": {
+              "id": 3063,
+              "name": "Birmingham City"
+            }
+          }
+        },
+        {
+          "id": 762482,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 532,
+          "excitement_rating": 7.12,
+          "teams": {
+            "home": {
+              "id": 3768,
+              "name": "Leicester City"
+            },
+            "away": {
+              "id": 4141,
+              "name": "Huddersfield Town"
+            }
+          }
+        },
+        {
+          "id": 762486,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 481,
+          "excitement_rating": 6.83,
+          "teams": {
+            "home": {
+              "id": 4150,
+              "name": "Middlesbrough"
+            },
+            "away": {
+              "id": 4161,
+              "name": "Coventry City"
+            }
+          }
+        },
+        {
+          "id": 762488,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 435,
+          "excitement_rating": 7.03,
+          "teams": {
+            "home": {
+              "id": 3311,
+              "name": "Norwich City"
+            },
+            "away": {
+              "id": 4142,
+              "name": "Southampton"
+            }
+          }
+        },
+        {
+          "id": 762493,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 421,
+          "excitement_rating": 5.82,
+          "teams": {
+            "home": {
+              "id": 4164,
+              "name": "Plymouth Argyle"
+            },
+            "away": {
+              "id": 2826,
+              "name": "Watford"
+            }
+          }
+        },
+        {
+          "id": 762496,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 350,
+          "excitement_rating": 5.52,
+          "teams": {
+            "home": {
+              "id": 4155,
+              "name": "Queens Park Rangers"
+            },
+            "away": {
+              "id": 3285,
+              "name": "Cardiff City"
+            }
+          }
+        },
+        {
+          "id": 762508,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 518,
+          "excitement_rating": 6.12,
+          "teams": {
+            "home": {
+              "id": 3318,
+              "name": "Swansea City"
+            },
+            "away": {
+              "id": 4144,
+              "name": "West Bromwich Albion"
+            }
+          }
+        },
+        {
+          "id": 762502,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 449,
+          "excitement_rating": 5.25,
+          "teams": {
+            "home": {
+              "id": 4143,
+              "name": "Stoke City"
+            },
+            "away": {
+              "id": 4157,
+              "name": "Ipswich Town"
+            }
+          }
+        },
+        {
+          "id": 762473,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 431,
+          "excitement_rating": 5.68,
+          "teams": {
+            "home": {
+              "id": 2908,
+              "name": "Blackburn Rovers"
+            },
+            "away": {
+              "id": 3061,
+              "name": "Rotherham United"
+            }
+          }
+        },
+        {
+          "id": 762499,
+          "date": "01/01/2024",
+          "time": "17:15",
+          "word_count": 450,
+          "excitement_rating": 6.18,
+          "teams": {
+            "home": {
+              "id": 4152,
+              "name": "Sheffield Wednesday"
+            },
+            "away": {
+              "id": 4153,
+              "name": "Hull City"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "league_id": 230,
+      "league_name": "FA Cup",
+      "is_cup": false,
+      "country": {
+        "id": 8,
+        "name": "england"
+      },
+      "match_previews": [
+        {
+          "id": 911750,
+          "date": "04/01/2024",
+          "time": "20:00",
+          "word_count": 528,
+          "excitement_rating": 7.4,
+          "teams": {
+            "home": {
+              "id": 4140,
+              "name": "Crystal Palace"
+            },
+            "away": {
+              "id": 4139,
+              "name": "Everton"
+            }
+          }
+        },
+        {
+          "id": 911743,
+          "date": "05/01/2024",
+          "time": "20:00",
+          "word_count": 373,
+          "excitement_rating": 8.52,
+          "teams": {
+            "home": {
+              "id": 2909,
+              "name": "Tottenham Hotspur"
+            },
+            "away": {
+              "id": 3104,
+              "name": "Burnley"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "league_id": 231,
+      "league_name": "League One",
+      "is_cup": false,
+      "country": {
+        "id": 8,
+        "name": "england"
+      },
+      "match_previews": [
+        {
+          "id": 767911,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 471,
+          "excitement_rating": 6.18,
+          "teams": {
+            "home": {
+              "id": 4159,
+              "name": "Barnsley"
+            },
+            "away": {
+              "id": 3320,
+              "name": "Wigan Athletic"
+            }
+          }
+        },
+        {
+          "id": 767915,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 480,
+          "excitement_rating": 6.12,
+          "teams": {
+            "home": {
+              "id": 3309,
+              "name": "Blackpool"
+            },
+            "away": {
+              "id": 4177,
+              "name": "Lincoln City"
+            }
+          }
+        },
+        {
+          "id": 767918,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 422,
+          "excitement_rating": 6.52,
+          "teams": {
+            "home": {
+              "id": 4156,
+              "name": "Bolton Wanderers"
+            },
+            "away": {
+              "id": 3305,
+              "name": "Burton Albion"
+            }
+          }
+        },
+        {
+          "id": 767921,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 539,
+          "excitement_rating": 7.37,
+          "teams": {
+            "home": {
+              "id": 4181,
+              "name": "Cambridge United"
+            },
+            "away": {
+              "id": 4196,
+              "name": "Leyton Orient"
+            }
+          }
+        },
+        {
+          "id": 767924,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 412,
+          "excitement_rating": 5.1,
+          "teams": {
+            "home": {
+              "id": 4189,
+              "name": "Carlisle United"
+            },
+            "away": {
+              "id": 4184,
+              "name": "Port Vale"
+            }
+          }
+        },
+        {
+          "id": 767926,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 498,
+          "excitement_rating": 6.5,
+          "teams": {
+            "home": {
+              "id": 4160,
+              "name": "Charlton Athletic"
+            },
+            "away": {
+              "id": 4168,
+              "name": "Oxford United"
+            }
+          }
+        },
+        {
+          "id": 767930,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 462,
+          "excitement_rating": 9.54,
+          "teams": {
+            "home": {
+              "id": 3064,
+              "name": "Derby County"
+            },
+            "away": {
+              "id": 4163,
+              "name": "Peterborough United"
+            }
+          }
+        },
+        {
+          "id": 767937,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 433,
+          "excitement_rating": 8.79,
+          "teams": {
+            "home": {
+              "id": 4165,
+              "name": "Portsmouth"
+            },
+            "away": {
+              "id": 4188,
+              "name": "Stevenage"
+            }
+          }
+        },
+        {
+          "id": 767941,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 466,
+          "excitement_rating": 7.68,
+          "teams": {
+            "home": {
+              "id": 3430,
+              "name": "Reading"
+            },
+            "away": {
+              "id": 4183,
+              "name": "Exeter City"
+            }
+          }
+        },
+        {
+          "id": 767943,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 394,
+          "excitement_rating": 4.8,
+          "teams": {
+            "home": {
+              "id": 4172,
+              "name": "Shrewsbury Town"
+            },
+            "away": {
+              "id": 4167,
+              "name": "Fleetwood Town"
+            }
+          }
+        },
+        {
+          "id": 767948,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 425,
+          "excitement_rating": 6.0,
+          "teams": {
+            "home": {
+              "id": 4162,
+              "name": "Wycombe Wanderers"
+            },
+            "away": {
+              "id": 3303,
+              "name": "Bristol Rovers"
+            }
+          }
+        },
+        {
+          "id": 767933,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 437,
+          "excitement_rating": 6.0,
+          "teams": {
+            "home": {
+              "id": 2790,
+              "name": "Northampton Town"
+            },
+            "away": {
+              "id": 3453,
+              "name": "Cheltenham Town"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "league_id": 232,
+      "league_name": "League Two",
+      "is_cup": false,
+      "country": {
+        "id": 8,
+        "name": "england"
+      },
+      "match_previews": [
+        {
+          "id": 769187,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 383,
+          "excitement_rating": 5.42,
+          "teams": {
+            "home": {
+              "id": 3450,
+              "name": "Grimsby Town"
+            },
+            "away": {
+              "id": 4175,
+              "name": "Walsall"
+            }
+          }
+        },
+        {
+          "id": 769189,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 435,
+          "excitement_rating": 7.21,
+          "teams": {
+            "home": {
+              "id": 4182,
+              "name": "Morecambe"
+            },
+            "away": {
+              "id": 2701,
+              "name": "Harrogate Town"
+            }
+          }
+        },
+        {
+          "id": 769174,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 398,
+          "excitement_rating": 5.19,
+          "teams": {
+            "home": {
+              "id": 3066,
+              "name": "Colchester United"
+            },
+            "away": {
+              "id": 4169,
+              "name": "Gillingham"
+            }
+          }
+        },
+        {
+          "id": 769175,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 432,
+          "excitement_rating": 6.48,
+          "teams": {
+            "home": {
+              "id": 4191,
+              "name": "Crawley Town"
+            },
+            "away": {
+              "id": 2713,
+              "name": "Swindon Town"
+            }
+          }
+        },
+        {
+          "id": 769181,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 408,
+          "excitement_rating": 6.51,
+          "teams": {
+            "home": {
+              "id": 4180,
+              "name": "Crewe Alexandra"
+            },
+            "away": {
+              "id": 3075,
+              "name": "Bradford City"
+            }
+          }
+        },
+        {
+          "id": 769182,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 281,
+          "excitement_rating": 5.59,
+          "teams": {
+            "home": {
+              "id": 4166,
+              "name": "Doncaster Rovers"
+            },
+            "away": {
+              "id": 4178,
+              "name": "Milton Keynes Dons"
+            }
+          }
+        },
+        {
+          "id": 769183,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 415,
+          "excitement_rating": 5.7,
+          "teams": {
+            "home": {
+              "id": 4185,
+              "name": "Forest Green Rovers"
+            },
+            "away": {
+              "id": 4174,
+              "name": "AFC Wimbledon"
+            }
+          }
+        },
+        {
+          "id": 769191,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 503,
+          "excitement_rating": 9.19,
+          "teams": {
+            "home": {
+              "id": 4200,
+              "name": "Stockport County"
+            },
+            "away": {
+              "id": 4187,
+              "name": "Mansfield Town"
+            }
+          }
+        },
+        {
+          "id": 769193,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 349,
+          "excitement_rating": 6.18,
+          "teams": {
+            "home": {
+              "id": 4198,
+              "name": "Sutton United"
+            },
+            "away": {
+              "id": 3065,
+              "name": "Newport County"
+            }
+          }
+        },
+        {
+          "id": 769196,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 488,
+          "excitement_rating": 6.83,
+          "teams": {
+            "home": {
+              "id": 4179,
+              "name": "Tranmere Rovers"
+            },
+            "away": {
+              "id": 4193,
+              "name": "Notts County"
+            }
+          }
+        },
+        {
+          "id": 769173,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 458,
+          "excitement_rating": 6.18,
+          "teams": {
+            "home": {
+              "id": 4170,
+              "name": "Accrington Stanley"
+            },
+            "away": {
+              "id": 4195,
+              "name": "Salford City"
+            }
+          }
+        },
+        {
+          "id": 769198,
+          "date": "01/01/2024",
+          "time": "15:00",
+          "word_count": 453,
+          "excitement_rating": 9.18,
+          "teams": {
+            "home": {
+              "id": 5063,
+              "name": "Wrexham"
+            },
+            "away": {
+              "id": 4197,
+              "name": "Barrow"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "league_id": 228,
+      "league_name": "Premier League",
+      "is_cup": false,
+      "country": {
+        "id": 8,
+        "name": "england"
+      },
+      "match_previews": [
+        {
+          "id": 768408,
+          "date": "01/01/2024",
+          "time": "20:00",
+          "word_count": 509,
+          "excitement_rating": 6.03,
+          "teams": {
+            "home": {
+              "id": 4138,
+              "name": "Liverpool"
+            },
+            "away": {
+              "id": 3071,
+              "name": "Newcastle United"
+            }
+          }
+        },
+        {
+          "id": 768427,
+          "date": "02/01/2024",
+          "time": "19:30",
+          "word_count": 416,
+          "excitement_rating": 7.73,
+          "teams": {
+            "home": {
+              "id": 3059,
+              "name": "West Ham United"
+            },
+            "away": {
+              "id": 3200,
+              "name": "Brighton & Hove Albion"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "league_id": 238,
+      "league_name": "Coupe de France",
+      "is_cup": false,
+      "country": {
+        "id": 9,
+        "name": "france"
+      },
+      "match_previews": [
+        {
+          "id": 911822,
+          "date": "05/01/2024",
+          "time": "17:00",
+          "word_count": 346,
+          "excitement_rating": 4.71,
+          "teams": {
+            "home": {
+              "id": 9716,
+              "name": "Feignies Aulnoye"
+            },
+            "away": {
+              "id": 4257,
+              "name": "Quevilly Rouen"
+            }
+          }
+        },
+        {
+          "id": 911846,
+          "date": "05/01/2024",
+          "time": "17:00",
+          "word_count": 375,
+          "excitement_rating": 6.11,
+          "teams": {
+            "home": {
+              "id": 9920,
+              "name": "Challans"
+            },
+            "away": {
+              "id": 4252,
+              "name": "Rodez"
+            }
+          }
+        },
+        {
+          "id": 911823,
+          "date": "05/01/2024",
+          "time": "17:00",
+          "word_count": 306,
+          "excitement_rating": 5.33,
+          "teams": {
+            "home": {
+              "id": 4251,
+              "name": "Chambly-Oise"
+            },
+            "away": {
+              "id": 9835,
+              "name": "Racing"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "league_id": 245,
+      "league_name": "Super League 1",
+      "is_cup": false,
+      "country": {
+        "id": 12,
+        "name": "greece"
+      },
+      "match_previews": [
+        {
+          "id": 801639,
+          "date": "03/01/2024",
+          "time": "15:00",
+          "word_count": 678,
+          "excitement_rating": 8.95,
+          "teams": {
+            "home": {
+              "id": 3111,
+              "name": "Lamia"
+            },
+            "away": {
+              "id": 3544,
+              "name": "Olympiakos"
+            }
+          }
+        },
+        {
+          "id": 801621,
+          "date": "03/01/2024",
+          "time": "17:00",
+          "word_count": 699,
+          "excitement_rating": 8.87,
+          "teams": {
+            "home": {
+              "id": 3181,
+              "name": "AEK Athens"
+            },
+            "away": {
+              "id": 2906,
+              "name": "Volos NFC"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "league_id": 252,
+      "league_name": "Ligat Ha'al",
+      "is_cup": false,
+      "country": {
+        "id": 18,
+        "name": "israel"
+      },
+      "match_previews": [
+        {
+          "id": 818499,
+          "date": "02/01/2024",
+          "time": "17:00",
+          "word_count": 389,
+          "excitement_rating": 5.55,
+          "teams": {
+            "home": {
+              "id": 4405,
+              "name": "Maccabi Bnei Raina"
+            },
+            "away": {
+              "id": 3020,
+              "name": "Maccabi Netanya"
+            }
+          }
+        },
+        {
+          "id": 818502,
+          "date": "02/01/2024",
+          "time": "18:00",
+          "word_count": 480,
+          "excitement_rating": 8.61,
+          "teams": {
+            "home": {
+              "id": 3329,
+              "name": "Hapoel Hadera"
+            },
+            "away": {
+              "id": 3321,
+              "name": "Hapoel Be'er Sheva"
+            }
+          }
+        },
+        {
+          "id": 818490,
+          "date": "03/01/2024",
+          "time": "17:00",
+          "word_count": 697,
+          "excitement_rating": 6.23,
+          "teams": {
+            "home": {
+              "id": 3323,
+              "name": "Hapoel Jerusalem"
+            },
+            "away": {
+              "id": 4402,
+              "name": "Maccabi Petah Tikva"
+            }
+          }
+        },
+        {
+          "id": 818495,
+          "date": "03/01/2024",
+          "time": "17:45",
+          "word_count": 616,
+          "excitement_rating": 6.71,
+          "teams": {
+            "home": {
+              "id": 3331,
+              "name": "Hapoel Tel Aviv"
+            },
+            "away": {
+              "id": 4403,
+              "name": "Bnei Sakhnin"
+            }
+          }
+        },
+        {
+          "id": 818504,
+          "date": "03/01/2024",
+          "time": "18:00",
+          "word_count": 663,
+          "excitement_rating": 6.12,
+          "teams": {
+            "home": {
+              "id": 3333,
+              "name": "Ashdod"
+            },
+            "away": {
+              "id": 3384,
+              "name": "Maccabi Tel Aviv"
+            }
+          }
+        },
+        {
+          "id": 818492,
+          "date": "03/01/2024",
+          "time": "18:15",
+          "word_count": 451,
+          "excitement_rating": 5.88,
+          "teams": {
+            "home": {
+              "id": 3334,
+              "name": "Hapoel Petah Tikva"
+            },
+            "away": {
+              "id": 3201,
+              "name": "Maccabi Haifa"
+            }
+          }
+        },
+        {
+          "id": 818505,
+          "date": "04/01/2024",
+          "time": "18:30",
+          "word_count": 466,
+          "excitement_rating": 5.38,
+          "teams": {
+            "home": {
+              "id": 2945,
+              "name": "Hapoel Haifa"
+            },
+            "away": {
+              "id": 3326,
+              "name": "Beitar Jerusalem"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "league_id": 255,
+      "league_name": "Coppa Italia",
+      "is_cup": false,
+      "country": {
+        "id": 6,
+        "name": "italy"
+      },
+      "match_previews": [
+        {
+          "id": 911088,
+          "date": "02/01/2024",
+          "time": "20:00",
+          "word_count": 316,
+          "excitement_rating": 5.75,
+          "teams": {
+            "home": {
+              "id": 4407,
+              "name": "AC Milan"
+            },
+            "away": {
+              "id": 4410,
+              "name": "Cagliari"
+            }
+          }
+        },
+        {
+          "id": 911083,
+          "date": "03/01/2024",
+          "time": "20:00",
+          "word_count": 467,
+          "excitement_rating": 7.1,
+          "teams": {
+            "home": {
+              "id": 3767,
+              "name": "Roma"
+            },
+            "away": {
+              "id": 2981,
+              "name": "Cremonese"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "league_id": 253,
+      "league_name": "Serie A",
+      "is_cup": false,
+      "country": {
+        "id": 6,
+        "name": "italy"
+      },
+      "match_previews": [
+        {
+          "id": 819257,
+          "date": "05/01/2024",
+          "time": "19:45",
+          "word_count": 484,
+          "excitement_rating": 5.65,
+          "teams": {
+            "home": {
+              "id": 2820,
+              "name": "Bologna"
+            },
+            "away": {
+              "id": 4411,
+              "name": "Genoa"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "league_id": 272,
+      "league_name": "Premiership",
+      "is_cup": false,
+      "country": {
+        "id": 42,
+        "name": "northern ireland"
+      },
+      "match_previews": [
+        {
+          "id": 844948,
+          "date": "02/01/2024",
+          "time": "19:45",
+          "word_count": 485,
+          "excitement_rating": 5.97,
+          "teams": {
+            "home": {
+              "id": 3608,
+              "name": "Crusaders"
+            },
+            "away": {
+              "id": 3587,
+              "name": "Linfield"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "league_id": 280,
+      "league_name": "Primeira Liga",
+      "is_cup": false,
+      "country": {
+        "id": 41,
+        "name": "portugal"
+      },
+      "match_previews": [
+        {
+          "id": 853098,
+          "date": "05/01/2024",
+          "time": "18:45",
+          "word_count": 708,
+          "excitement_rating": 6.72,
+          "teams": {
+            "home": {
+              "id": 4716,
+              "name": "Sporting Lisbon"
+            },
+            "away": {
+              "id": 4724,
+              "name": "Estoril"
+            }
+          }
+        },
+        {
+          "id": 853119,
+          "date": "05/01/2024",
+          "time": "20:45",
+          "word_count": 618,
+          "excitement_rating": 8.71,
+          "teams": {
+            "home": {
+              "id": 3370,
+              "name": "Boavista"
+            },
+            "away": {
+              "id": 3216,
+              "name": "Porto"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "league_id": 288,
+      "league_name": "Saudi League",
+      "is_cup": false,
+      "country": {
+        "id": 63,
+        "name": "saudi arabia"
+      },
+      "match_previews": [
+        {
+          "id": 864335,
+          "date": "07/02/2024",
+          "time": "18:00",
+          "word_count": 421,
+          "excitement_rating": 4.93,
+          "teams": {
+            "home": {
+              "id": 2850,
+              "name": "Al Tai"
+            },
+            "away": {
+              "id": 4797,
+              "name": "Al Ittihad"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "league_id": 290,
+      "league_name": "Championship",
+      "is_cup": false,
+      "country": {
+        "id": 21,
+        "name": "scotland"
+      },
+      "match_previews": [
+        {
+          "id": 865059,
+          "date": "02/01/2024",
+          "time": "15:00",
+          "word_count": 495,
+          "excitement_rating": 6.97,
+          "teams": {
+            "home": {
+              "id": 3480,
+              "name": "Arbroath"
+            },
+            "away": {
+              "id": 3598,
+              "name": "Dundee United"
+            }
+          }
+        },
+        {
+          "id": 865070,
+          "date": "02/01/2024",
+          "time": "15:00",
+          "word_count": 457,
+          "excitement_rating": 6.31,
+          "teams": {
+            "home": {
+              "id": 4813,
+              "name": "Partick Thistle"
+            },
+            "away": {
+              "id": 3202,
+              "name": "Queen's Park"
+            }
+          }
+        },
+        {
+          "id": 865057,
+          "date": "02/01/2024",
+          "time": "15:00",
+          "word_count": 389,
+          "excitement_rating": 5.76,
+          "teams": {
+            "home": {
+              "id": 5079,
+              "name": "Airdrieonians"
+            },
+            "away": {
+              "id": 4810,
+              "name": "Inverness CT"
+            }
+          }
+        },
+        {
+          "id": 865064,
+          "date": "02/01/2024",
+          "time": "15:00",
+          "word_count": 406,
+          "excitement_rating": 7.03,
+          "teams": {
+            "home": {
+              "id": 4814,
+              "name": "Dunfermline Athletic"
+            },
+            "away": {
+              "id": 3319,
+              "name": "Raith Rovers"
+            }
+          }
+        },
+        {
+          "id": 865067,
+          "date": "02/01/2024",
+          "time": "15:00",
+          "word_count": 452,
+          "excitement_rating": 7.42,
+          "teams": {
+            "home": {
+              "id": 4812,
+              "name": "Greenock Morton"
+            },
+            "away": {
+              "id": 4811,
+              "name": "Ayr United"
+            }
+          }
+        },
+        {
+          "id": 865084,
+          "date": "05/01/2024",
+          "time": "19:45",
+          "word_count": 521,
+          "excitement_rating": 5.94,
+          "teams": {
+            "home": {
+              "id": 3202,
+              "name": "Queen's Park"
+            },
+            "away": {
+              "id": 4814,
+              "name": "Dunfermline Athletic"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "league_id": 289,
+      "league_name": "Premiership",
+      "is_cup": false,
+      "country": {
+        "id": 21,
+        "name": "scotland"
+      },
+      "match_previews": [
+        {
+          "id": 870442,
+          "date": "02/01/2024",
+          "time": "15:00",
+          "word_count": 398,
+          "excitement_rating": 6.12,
+          "teams": {
+            "home": {
+              "id": 2782,
+              "name": "Ross County"
+            },
+            "away": {
+              "id": 2717,
+              "name": "Aberdeen"
+            }
+          }
+        },
+        {
+          "id": 870431,
+          "date": "02/01/2024",
+          "time": "15:00",
+          "word_count": 425,
+          "excitement_rating": 5.5,
+          "teams": {
+            "home": {
+              "id": 2714,
+              "name": "Dundee"
+            },
+            "away": {
+              "id": 3475,
+              "name": "St. Johnstone"
+            }
+          }
+        },
+        {
+          "id": 870434,
+          "date": "02/01/2024",
+          "time": "15:00",
+          "word_count": 336,
+          "excitement_rating": 5.62,
+          "teams": {
+            "home": {
+              "id": 3782,
+              "name": "Hibernian"
+            },
+            "away": {
+              "id": 3481,
+              "name": "Motherwell"
+            }
+          }
+        },
+        {
+          "id": 870438,
+          "date": "02/01/2024",
+          "time": "15:00",
+          "word_count": 338,
+          "excitement_rating": 4.87,
+          "teams": {
+            "home": {
+              "id": 3407,
+              "name": "Livingston"
+            },
+            "away": {
+              "id": 3310,
+              "name": "Hearts"
+            }
+          }
+        },
+        {
+          "id": 870439,
+          "date": "02/01/2024",
+          "time": "15:00",
+          "word_count": 434,
+          "excitement_rating": 6.32,
+          "teams": {
+            "home": {
+              "id": 2801,
+              "name": "Rangers"
+            },
+            "away": {
+              "id": 4808,
+              "name": "Kilmarnock"
+            }
+          }
+        },
+        {
+          "id": 870444,
+          "date": "02/01/2024",
+          "time": "17:00",
+          "word_count": 411,
+          "excitement_rating": 6.09,
+          "teams": {
+            "home": {
+              "id": 4809,
+              "name": "St. Mirren"
+            },
+            "away": {
+              "id": 2827,
+              "name": "Celtic"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "league_id": 297,
+      "league_name": "La Liga",
+      "is_cup": false,
+      "country": {
+        "id": 60,
+        "name": "spain"
+      },
+      "match_previews": [
+        {
+          "id": 879149,
+          "date": "02/01/2024",
+          "time": "16:00",
+          "word_count": 418,
+          "excitement_rating": 5.88,
+          "teams": {
+            "home": {
+              "id": 4891,
+              "name": "Getafe"
+            },
+            "away": {
+              "id": 2910,
+              "name": "Rayo Vallecano"
+            }
+          }
+        },
+        {
+          "id": 879177,
+          "date": "02/01/2024",
+          "time": "18:15",
+          "word_count": 467,
+          "excitement_rating": 5.19,
+          "teams": {
+            "home": {
+              "id": 4885,
+              "name": "Real Sociedad"
+            },
+            "away": {
+              "id": 4892,
+              "name": "Alaves"
+            }
+          }
+        },
+        {
+          "id": 879152,
+          "date": "02/01/2024",
+          "time": "20:30",
+          "word_count": 478,
+          "excitement_rating": 6.28,
+          "teams": {
+            "home": {
+              "id": 4890,
+              "name": "Valencia"
+            },
+            "away": {
+              "id": 2907,
+              "name": "Villarreal"
+            }
+          }
+        },
+        {
+          "id": 879172,
+          "date": "03/01/2024",
+          "time": "16:00",
+          "word_count": 457,
+          "excitement_rating": 3.93,
+          "teams": {
+            "home": {
+              "id": 3369,
+              "name": "Granada"
+            },
+            "away": {
+              "id": 4889,
+              "name": "Cadiz"
+            }
+          }
+        },
+        {
+          "id": 879174,
+          "date": "03/01/2024",
+          "time": "18:15",
+          "word_count": 661,
+          "excitement_rating": 6.64,
+          "teams": {
+            "home": {
+              "id": 4883,
+              "name": "Real Madrid"
+            },
+            "away": {
+              "id": 2802,
+              "name": "Mallorca"
+            }
+          }
+        },
+        {
+          "id": 879166,
+          "date": "03/01/2024",
+          "time": "18:15",
+          "word_count": 568,
+          "excitement_rating": 6.53,
+          "teams": {
+            "home": {
+              "id": 2911,
+              "name": "Celta Vigo"
+            },
+            "away": {
+              "id": 4886,
+              "name": "Real Betis"
+            }
+          }
+        },
+        {
+          "id": 879162,
+          "date": "03/01/2024",
+          "time": "20:30",
+          "word_count": 606,
+          "excitement_rating": 8.85,
+          "teams": {
+            "home": {
+              "id": 2798,
+              "name": "Girona"
+            },
+            "away": {
+              "id": 4882,
+              "name": "Atletico Madrid"
+            }
+          }
+        },
+        {
+          "id": 879156,
+          "date": "04/01/2024",
+          "time": "16:00",
+          "word_count": 470,
+          "excitement_rating": 5.16,
+          "teams": {
+            "home": {
+              "id": 4888,
+              "name": "Osasuna"
+            },
+            "away": {
+              "id": 4898,
+              "name": "Almeria"
+            }
+          }
+        },
+        {
+          "id": 879159,
+          "date": "04/01/2024",
+          "time": "18:15",
+          "word_count": 505,
+          "excitement_rating": 5.16,
+          "teams": {
+            "home": {
+              "id": 3019,
+              "name": "Sevilla"
+            },
+            "away": {
+              "id": 4887,
+              "name": "Athletic Bilbao"
+            }
+          }
+        },
+        {
+          "id": 879164,
+          "date": "04/01/2024",
+          "time": "20:30",
+          "word_count": 399,
+          "excitement_rating": 5.12,
+          "teams": {
+            "home": {
+              "id": 4903,
+              "name": "Las Palmas"
+            },
+            "away": {
+              "id": 4884,
+              "name": "Barcelona"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "league_id": 305,
+      "league_name": "Super Lig",
+      "is_cup": false,
+      "country": {
+        "id": 19,
+        "name": "turkey"
+      },
+      "match_previews": [
+        {
+          "id": 885719,
+          "date": "05/01/2024",
+          "time": "14:00",
+          "word_count": 430,
+          "excitement_rating": 5.25,
+          "teams": {
+            "home": {
+              "id": 3018,
+              "name": "Gaziantep FK"
+            },
+            "away": {
+              "id": 5089,
+              "name": "Pendikspor"
+            }
+          }
+        },
+        {
+          "id": 885726,
+          "date": "05/01/2024",
+          "time": "17:00",
+          "word_count": 603,
+          "excitement_rating": 7.17,
+          "teams": {
+            "home": {
+              "id": 3069,
+              "name": "Besiktas"
+            },
+            "away": {
+              "id": 3013,
+              "name": "Kasimpasa"
+            }
+          }
+        },
+        {
+          "id": 885722,
+          "date": "05/01/2024",
+          "time": "17:00",
+          "word_count": 691,
+          "excitement_rating": 6.82,
+          "teams": {
+            "home": {
+              "id": 3284,
+              "name": "Antalyaspor"
+            },
+            "away": {
+              "id": 3346,
+              "name": "Alanyaspor"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "league_id": 309,
+      "league_name": "Premier League",
+      "is_cup": false,
+      "country": {
+        "id": 50,
+        "name": "wales"
+      },
+      "match_previews": [
+        {
+          "id": 897394,
+          "date": "05/01/2024",
+          "time": "20:00",
+          "word_count": 489,
+          "excitement_rating": 6.74,
+          "teams": {
+            "home": {
+              "id": 5045,
+              "name": "Aberystwyth Town"
+            },
+            "away": {
+              "id": 5092,
+              "name": "Colwyn Bay"
+            }
+          }
+        },
+        {
+          "id": 897400,
+          "date": "06/01/2024",
+          "time": "14:30",
+          "word_count": 443,
+          "excitement_rating": 6.12,
+          "teams": {
+            "home": {
+              "id": 5042,
+              "name": "Barry Town United"
+            },
+            "away": {
+              "id": 3612,
+              "name": "Newtown"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

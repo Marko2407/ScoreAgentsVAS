@@ -11,13 +11,16 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.res.colorResource
 import androidx.core.view.WindowCompat
+import com.mvukosav.scoreagentsvas.R
 
 val ScoreColors = lightColorScheme(
-    primary = Purple40,
+    primary = Color.Black,
     secondary = PurpleGrey40,
     tertiary = Pink40,
     background = White40
@@ -34,14 +37,14 @@ val ScoreColors = lightColorScheme(
 )
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
+    primary = Gray,
     secondary = PurpleGrey80,
     tertiary = Pink80,
     background = White40
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
+    primary = Color.Black,
     secondary = PurpleGrey40,
     tertiary = Pink40,
     background = White40
