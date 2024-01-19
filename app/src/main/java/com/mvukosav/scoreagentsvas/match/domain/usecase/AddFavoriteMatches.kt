@@ -7,5 +7,5 @@ import javax.inject.Inject
 
 class AddFavoriteMatches @Inject constructor(private val matchesRepository: MatchesRepository) {
 
-    suspend operator fun invoke(matchId: Int) = matchesRepository.setAsFavorite(matchId)
+    suspend operator fun invoke(matchId: String) = matchesRepository.setAsFavorite(matchId)
 }

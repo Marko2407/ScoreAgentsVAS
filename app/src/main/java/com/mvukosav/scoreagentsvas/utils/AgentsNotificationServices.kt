@@ -11,15 +11,16 @@ import com.mvukosav.scoreagentsvas.R
 import com.mvukosav.scoreagentsvas.service.AgentsNotificationService
 import java.util.UUID
 import javax.inject.Inject
+import kotlin.random.Random
 
 
-class AgentsNotificationServiceImpl @Inject constructor(private val context: Context):
+class AgentsNotificationServiceImpl @Inject constructor(private val context: Context) :
     AgentsNotificationService {
 
     private val notificationManager =
         context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-    override fun showNotification(title: String, content: String, notifId: Int) {
+    override fun showNotification(title: String, content: String, notifId: String) {
         val activityIntent = Intent(context, MainActivity::class.java)
         val activityPendingIntent = PendingIntent.getActivity(
             context, 1, activityIntent,
@@ -32,7 +33,7 @@ class AgentsNotificationServiceImpl @Inject constructor(private val context: Con
             .setContentIntent(activityPendingIntent)
             .build()
         Log.d("LOLOLO_ANOTIF", "notigikacije")
-        notificationManager.notify(notifId, notification)
+        notificationManager.notify(Random.nextInt(), notification)
     }
 
     override fun showNotification2(title: String, content: String, notifId: Int) {

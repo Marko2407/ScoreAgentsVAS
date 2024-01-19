@@ -1,7 +1,5 @@
 package com.mvukosav.scoreagentsvas.match.domain.model.matchdetails
 
-import com.mvukosav.scoreagentsvas.match.domain.model.livescores.Status
-
 data class Event(
     val assist_player: Any,
     val event_minute: String,
@@ -21,7 +19,7 @@ enum class EventsEnum(val nameEvent: String) {
     RED_CARD("red_card"), YELLOW_CARD("yellow_card"), SUBS("substitution"), PENAL("penalty_goal"), CORNERS("corners"), UNKNOWN(""), HOME(nameEvent = "home"), AWAY("away");
 
     companion object {
-        fun fromName(name: String): EventsEnum {
+        fun fromName(name: String?): EventsEnum {
             return EventsEnum.entries.firstOrNull { it.nameEvent.equals(name, ignoreCase = true) }
                 ?: EventsEnum.UNKNOWN
         }
@@ -29,6 +27,7 @@ enum class EventsEnum(val nameEvent: String) {
 }
 
 data class EventsUi(
-    val home: List<EventUi>,
-    val away: List<EventUi>
+    val id: String? = null,
+    val home: List<EventUi>?,
+    val away: List<EventUi>?
 )

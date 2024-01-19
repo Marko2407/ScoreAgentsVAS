@@ -36,10 +36,10 @@ data class MatchLiveScore(
 )
 
 enum class Status(val nameStatus: String) {
-    LIVE("live"), FINISHED("finished"), HALFTIME("halftime"), UNKNOWN("unknown"), PREMATCH("pre-match");
+    LIVE("live"), FINISHED("finished"), HALFTIME("halftime"), UNKNOWN("unknown"), PREMATCH("prematch");
 
     companion object {
-        fun fromName(name: String): Status {
+        fun fromName(name: String?): Status {
             return entries.firstOrNull { it.nameStatus.equals(name, ignoreCase = true) } ?: UNKNOWN
         }
     }

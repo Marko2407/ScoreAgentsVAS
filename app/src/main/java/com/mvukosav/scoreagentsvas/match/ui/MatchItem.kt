@@ -195,7 +195,7 @@ fun MatchItemPreview() {
                 status = Status.LIVE,
                 startTime = "01.02.2024 03:45",
                 fixtures = "Barcelona - Real Madrid",
-                publicRate = 9.5,
+                publicRate = "9.5",
                 isFavorite = true
             )
         )
@@ -204,7 +204,7 @@ fun MatchItemPreview() {
                 status = Status.PREMATCH,
                 startTime = "01.02.2024 03:45",
                 fixtures = "Barcelona - Real Madrid",
-                publicRate = 9.5,
+                publicRate = "9.5",
             )
         )
         MatchItem(
@@ -212,7 +212,7 @@ fun MatchItemPreview() {
                 status = Status.HALFTIME,
                 startTime = "01.02.2024 03:45",
                 fixtures = "Barcelona - Real Madrid",
-                publicRate = 9.5,
+                publicRate = "9.5",
             )
         )
         MatchItem(
@@ -220,7 +220,7 @@ fun MatchItemPreview() {
                 status = Status.UNKNOWN,
                 startTime = "01.02.2024 03:45",
                 fixtures = "Barcelona - Real Madrid",
-                publicRate = 9.5,
+                publicRate = "9.5",
             )
         )
         MatchItem(
@@ -228,24 +228,24 @@ fun MatchItemPreview() {
                 status = Status.FINISHED,
                 startTime = "01.02.2024 03:45",
                 fixtures = "Barcelona - Real Madrid",
-                publicRate = 9.5,
+                publicRate ="9.5",
             )
         )
         MatchItem(
             item = UiMatch(
                 startTime = "01.02.2024 03:45",
                 fixtures = "Barcelona - Real Madrid",
-                publicRate = 9.5,
+                publicRate = "9.5",
             )
         )
     }
 }
 
 data class UiMatch(
-    val id: Int? = null,
+    val id: String? = null,
     val startTime: String,
     val fixtures: String,
-    val publicRate: Double,
+    val publicRate: String,
     val status: Status? = null,
     val isFavorite: Boolean = false,
     val odds1: UiOdds = UiOdds(2.22, mutableStateOf(false)),

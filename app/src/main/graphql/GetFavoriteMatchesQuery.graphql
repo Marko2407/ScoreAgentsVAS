@@ -1,0 +1,8 @@
+query GetFavoriteMatchesQuery($username: String!) {
+    favoriteMatches(username: $username) {
+        username
+        match {
+            _id
+        }
+    }
+}

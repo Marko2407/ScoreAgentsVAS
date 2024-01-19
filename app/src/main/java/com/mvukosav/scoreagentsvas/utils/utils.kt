@@ -16,5 +16,5 @@ fun jsonToObject(jsonString: String): Notification {
 data class Notification(
     val title: String,
     val content: String,
-    val id: Int
+    val id: String
 )

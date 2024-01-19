@@ -5,5 +5,5 @@ import javax.inject.Inject
 
 class ChangeMatchStatus @Inject constructor(private val matchesRepository: MatchesRepository) {
 
-    suspend operator fun invoke(matchId: Int) = matchesRepository.changeMatchStatus(matchId)
+    suspend operator fun invoke(matchId: String) = matchesRepository.changeMatchStatus(matchId)
 }

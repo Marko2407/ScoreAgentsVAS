@@ -1,0 +1,39 @@
+query MatchDetailsQuery($matchId: ID!) {
+    matchDetails(matchId: $matchId) {
+        _id
+        startTime
+        league
+        homeTeam
+        awayTeam
+        status
+        minute
+        winner
+        events {
+            _id
+            homeEvents {
+                _id
+                name
+                number
+            }
+            awayEvents {
+                _id
+                name
+                number
+            }
+        }
+        goals
+        excitementRating
+        oddsHome
+        oddsAway
+        oddsDraw
+        matchPreview {
+            _id
+            previewContent {
+                _id
+                content
+                name
+            }
+        }
+        isFavorite
+    }
+}

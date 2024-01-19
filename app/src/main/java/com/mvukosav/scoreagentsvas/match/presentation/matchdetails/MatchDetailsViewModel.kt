@@ -5,7 +5,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mvukosav.scoreagentsvas.match.domain.model.matchdetails.MatchDetail
+import com.mvukosav.scoreagentsvas.match.domain.model.livescores.MatchLiveScoreGraphQL
+import com.mvukosav.scoreagentsvas.match.domain.model.livescores.Status
 import com.mvukosav.scoreagentsvas.match.domain.usecase.AddFavoriteMatches
 import com.mvukosav.scoreagentsvas.match.domain.usecase.ChangeMatchStatus
 import com.mvukosav.scoreagentsvas.match.domain.usecase.GetMatchDetails
@@ -31,11 +32,11 @@ class MatchDetailsViewModel @Inject constructor(
         MutableStateFlow(MatchDetailsScreenState.Loading)
     var state: StateFlow<MatchDetailsScreenState> = _state
 
-    private var currentMatchId: Int? = null
+    private var currentMatchId: String? = null
 
     init {
-        savedStateHandle.get<Int>("matchId")?.let { matchId ->
-            if (matchId != -1) {
+        savedStateHandle.get<String>("matchId")?.let { matchId ->
+            if (matchId != "-1") {
                 //get match and save with this id
                 Log.d("LOLOLO_Match", "MATCH ID : $matchId")
                 currentMatchId = matchId
@@ -57,7 +58,7 @@ class MatchDetailsViewModel @Inject constructor(
         }
     }
 
-    private suspend fun renderData(data: MatchDetail?) {
+    private suspend fun renderData(data: MatchLiveScoreGraphQL?) {
         if (data == null) {
             _state.emit(MatchDetailsScreenState.Error("Unable to details", ::refresh))
         } else {
@@ -68,26 +69,26 @@ class MatchDetailsViewModel @Inject constructor(
     private fun refresh() {
         viewModelScope.launch {
             _state.emit(MatchDetailsScreenState.Loading)
-            getMatchDetails(currentMatchId ?: -1)
+            getMatchDetails(currentMatchId ?: "-1")
         }
     }
 
-    private fun dataToUiMapper(data: MatchDetail): UiMatchData {
+    private fun dataToUiMapper(data: MatchLiveScoreGraphQL?): UiMatchData {
         return UiMatchData(
-            id = data.id,
-            startTime = data.startTime,
-            league = data.league,
-            homeTeam = data.homeTeam,
-            awayTeam = data.awayTeam,
-            status = data.status,
-            minute = data.minute,
-            winner = data.winner,
-            goals = data.goals,
-            event = data.events,
-            odds = UiOdds(data.oddsHome, mutableStateOf(false)),
-            excitementRating = data.excitementRating,
-            isFavorite = data.isFavorite,
-            matchPreview = data.matchPreview,
+            id = data?.id,
+            startTime = data?.startTime,
+            league = data?.leagueName,
+            homeTeam = data?.homeTeam,
+            awayTeam = data?.awayTeam,
+            status = data?.status ?: Status.UNKNOWN,
+            minute = data?.minute,
+            winner = data?.winner,
+            goals = data?.goals,
+            event = data?.events,
+            odds = UiOdds(data?.oddsHome ?: 0.0, mutableStateOf(false)),
+            excitementRating = data?.excitementRating,
+            isFavorite = data?.isFavorite ?: false,
+            matchPreview = data?.matchPreview,
             onFavoriteClick = ::onFavoriteClick,
             changeMatchStatus = ::changeMatchStatus
         )
@@ -96,13 +97,13 @@ class MatchDetailsViewModel @Inject constructor(
     private fun changeMatchStatus() {
         viewModelScope.launch {
             Log.d("MARKO", "tu si $currentMatchId")
-            changeMatchStatus(matchId = currentMatchId ?: -1)
+            changeMatchStatus(matchId = currentMatchId ?: "-1")
         }
     }
 
     private fun onFavoriteClick() {
         viewModelScope.launch {
-            addFavoriteMatches(matchId = currentMatchId ?: -1)
+            addFavoriteMatches(matchId = currentMatchId ?: "-1")
         }
     }
 }

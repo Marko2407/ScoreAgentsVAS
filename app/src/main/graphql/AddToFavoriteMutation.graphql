@@ -1,0 +1,21 @@
+mutation AddToFavorite($username: String, $matchId: ID) {
+    addToFavorite(username: $username, matchID: $matchId) {
+        username
+        match {
+            _id
+            startTime
+            league
+            homeTeam
+            awayTeam
+            status
+            minute
+            winner
+            goals
+            excitementRating
+            oddsHome
+            oddsAway
+            oddsDraw
+            isFavorite
+        }
+    }
+}

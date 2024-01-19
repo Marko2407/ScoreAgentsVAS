@@ -6,6 +6,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,6 +16,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
@@ -46,7 +48,6 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.text.toUpperCase
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -54,15 +55,12 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.mvukosav.scoreagentsvas.R
+import com.mvukosav.scoreagentsvas.match.domain.model.livescores.MatchPreviewContentGraph
+import com.mvukosav.scoreagentsvas.match.domain.model.livescores.MatchPreviewGraphQL
 import com.mvukosav.scoreagentsvas.match.domain.model.livescores.Status
 import com.mvukosav.scoreagentsvas.match.domain.model.matchdetails.EventUi
 import com.mvukosav.scoreagentsvas.match.domain.model.matchdetails.EventsEnum
 import com.mvukosav.scoreagentsvas.match.domain.model.matchdetails.EventsUi
-import com.mvukosav.scoreagentsvas.match.domain.model.matchdetails.League
-import com.mvukosav.scoreagentsvas.match.domain.model.matchdetails.MatchPreviewContent
-import com.mvukosav.scoreagentsvas.match.domain.model.matchdetails.PreviewContent
-import com.mvukosav.scoreagentsvas.match.presentation.home.HomeScreenState
-import com.mvukosav.scoreagentsvas.match.ui.ErrorScreen
 import com.mvukosav.scoreagentsvas.match.ui.LiveBadge
 import com.mvukosav.scoreagentsvas.match.ui.LoadingScreen
 import com.mvukosav.scoreagentsvas.match.ui.UiOdds
@@ -118,7 +116,8 @@ fun MatchDetailsDataScreen(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(colorResource(id = R.color.grass_green))
+                .background(colorResource(id = R.color.grass_green)),
+            verticalArrangement = Arrangement.Top
         ) {
             MatchHeader(state.items, navController)
         }
@@ -167,13 +166,13 @@ fun MatchHeader(
                         color = Color.White
                     )
                     Text(
-                        text = items.goals,
+                        text = items.goals.toString(),
                         fontSize = 14.sp,
                         color = Color.White
                     )
                 }
                 Text(
-                    text = items.league.name,
+                    text = items.league.toString(),
                     fontSize = 12.sp,
                     color = Color.White
                 )
@@ -246,13 +245,13 @@ fun MatchHeader(
     ) {
         Column(modifier = Modifier.padding(start = 20.dp, top = 5.dp, bottom = 8.dp)) {
             Text(
-                text = items.homeTeam,
+                text = items.homeTeam.toString(),
                 fontSize = 14.sp,
                 color = Color.White
             )
             Spacer(modifier = Modifier.height(5.dp))
             Text(
-                text = items.awayTeam,
+                text = items.awayTeam.toString(),
                 fontSize = 14.sp,
                 color = Color.White
             )
@@ -269,7 +268,7 @@ fun MatchHeader(
                     modifier = Modifier
                         .width(90.dp)
                 ) {
-                    items.event.home.forEach {
+                    items.event?.home?.forEach {
                         AnalyticsText(it.number)
                     }
                 }
@@ -278,7 +277,7 @@ fun MatchHeader(
                     modifier = Modifier
                         .width(90.dp)
                 ) {
-                    items.event.away.forEach {
+                    items.event?.away?.forEach {
                         AnalyticsText(it.number)
                     }
                 }
@@ -290,15 +289,24 @@ fun MatchHeader(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MatchContent(matchPreview: MatchPreviewContent?) {
+fun MatchContent(matchPreview: MatchPreviewGraphQL?) {
     if (matchPreview != null) {
-        Text(text = "Match preview:", modifier = Modifier.fillMaxWidth().padding(start = 20.dp, top = 2.dp))
+        Text(
+            text = "Match preview:",
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 20.dp, top = 2.dp),
+            fontSize = 14.sp
+        )
         LazyColumn(
             Modifier
-                .padding(start = 20.dp, end = 20.dp, top = 5.dp, bottom = 20.dp)
-                .fillMaxSize()
+                .padding(start = 20.dp, end = 20.dp)
+                .fillMaxWidth(),
+            verticalArrangement = Arrangement.Top,
+            horizontalAlignment = Alignment.Start,
+            contentPadding = PaddingValues(0.dp),
         ) {
-            matchPreview.preview_content.forEach {
+            matchPreview.previewContent?.forEach {
                 item {
                     var maxLines by remember { mutableIntStateOf(9) }
                     ElevatedCard(
@@ -308,14 +316,14 @@ fun MatchContent(matchPreview: MatchPreviewContent?) {
                     ) {
                         Row {
                             Text(
-                                text = "${it.name.toUpperCase()}:",
+                                text = "${it.name?.toUpperCase()}:",
                                 modifier = Modifier.padding(5.dp),
                                 fontSize = 12.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.SansSerif
                             )
                             Text(
-                                text = it.content,
+                                text = it.content.toString(),
                                 modifier = Modifier.padding(top = 5.dp, end = 10.dp, bottom = 5.dp),
                                 fontSize = 12.sp,
                                 maxLines = maxLines,
@@ -323,7 +331,6 @@ fun MatchContent(matchPreview: MatchPreviewContent?) {
                             )
                         }
                     }
-                    Spacer(modifier = Modifier.height(10.dp))
                 }
             }
         }
@@ -397,35 +404,36 @@ fun MatchPreviewLoading() {
 
 
 data class UiMatchData(
-    val id: Int,
-    val startTime: String,
-    val league: League,
-    val homeTeam: String,
-    val awayTeam: String,
-    val status: Status,
-    val minute: Int,
-    val winner: String,
-    val goals: String,
-    val event: EventsUi,
+    val id: String? = "",
+    val startTime: String? = "",
+    val league: String? = "",
+    val homeTeam: String? = "",
+    val awayTeam: String? = "",
+    val status: Status = Status.UNKNOWN,
+    val minute: Int? = 0,
+    val winner: String? = "unknown",
+    val goals: String? = "0:0",
+    val event: EventsUi? = null,
     val odds: UiOdds,
-    val excitementRating: String,
-    val isFavorite: Boolean = true,
-    val matchPreview: MatchPreviewContent?,
+    val excitementRating: String? = "0.0",
+    val isFavorite: Boolean = false,
+    val matchPreview: MatchPreviewGraphQL? = null,
     val onFavoriteClick: () -> Unit = {},
     val changeMatchStatus: () -> Unit = {}
 )
 
 object UiMatchDataPreview {
     val data = UiMatchData(
-        id = 1,
+        id = "1",
         startTime = "05/01/2024 23:50",
-        league = League(222, "Coppa italia"),
+        league = "Coppa italia",
         homeTeam = "Real Madrid",
         awayTeam = "Barcelona",
         status = Status.LIVE,
         minute = 13,
         winner = "tdn",
         event = EventsUi(
+            id = null,
             listOf(
                 EventUi(EventsEnum.PENAL, "1"),
                 EventUi(EventsEnum.CORNERS, "6"),
@@ -444,15 +452,32 @@ object UiMatchDataPreview {
         goals = "2:1",
         excitementRating = "",
         odds = UiOdds(0.0, mutableStateOf(true)),
-        matchPreview = MatchPreviewContent(
-            999,
+        matchPreview = MatchPreviewGraphQL(
+            "999",
             listOf(
-                PreviewContent(
+                MatchPreviewContentGraph(
+                    id = null,
+                    "This Saturday, January 6, fans will gather",
+                    "P2"
+                ),
+                MatchPreviewContentGraph(
+                    id = null,
+                    "This Saturday, January 6, fans will gather",
+                    "P2"
+                ),
+                MatchPreviewContentGraph(
+                    id = null,
                     "This Saturday, January 6, fans will gather at the Stade Du 1Er Novembre 1954 stadium in Tizi-Ouzou to watch an exciting match between Kabylie and ASO Chlef in the Algeria Ligue 1 league. Kickoff is set for 15:45 (UTC). With a forecast of moderate to heavy rain and thunder, the weather may add an extra element to the game as the temperature peaks at 49 degrees Fahrenheit. These two teams last faced off in the Division-1 on March 03, 2023, with the match ending in a 0-0 draw. Don't miss out on what is sure to be a fierce and competitive game between these skilled teams.",
                     "P1"
                 ),
-                PreviewContent(
-                    "This Saturday, January 6, fans will gather at the Stade Du 1Er Novembre 1954 stadium in Tizi-Ouzou to watch an exciting match between Kabylie and ASO Chlef in the Algeria Ligue 1 league. Kickoff is set for 15:45 (UTC). With a forecast of moderate to heavy rain and thunder, the weather may add an extra element to the game as the temperature peaks at 49 degrees Fahrenheit. These two teams last faced off in the Division-1 on March 03, 2023, with the match ending in a 0-0 draw. Don't miss out on what is sure to be a fierce and competitive game between these skilled teams. Haha here is max lines This Saturday, January 6, fans will gather at the Stade Du 1Er Novembre 1954 stadium in Tizi-Ouzou to watch an exciting match between Kabylie and ASO Chlef in the Algeria Ligue 1 league. Kickoff is set for 15:45 (UTC). With a forecast of moderate to heavy rain and thunder, the weather may add an extra element to the game as the temperature peaks at 49 degrees Fahrenheit. These two teams last faced off in the Division-1 on March 03, 2023, with the match ending in a 0-0 draw. Don't miss out on what is sure to be a fierce and competitive game between these skilled teams.",
+                MatchPreviewContentGraph(
+                    id = null,
+                    "This Saturday, January 6, fans will gather",
+                    "P2"
+                ),
+                MatchPreviewContentGraph(
+                    id = null,
+                    "This Saturday, January 6, fans will gather",
                     "P2"
                 )
             )
@@ -460,15 +485,16 @@ object UiMatchDataPreview {
     )
 
     val dataWithoutPreviewContent = UiMatchData(
-        id = 1,
+        id = "1",
         startTime = "05/01/2024 23:50",
-        league = League(222, "Coppa italia"),
+        league = "Coppa italia",
         homeTeam = "Real Madrid",
         awayTeam = "Barcelona",
         status = Status.HALFTIME,
         minute = 13,
         winner = "tdn",
         event = EventsUi(
+            id = null,
             listOf(
                 EventUi(EventsEnum.PENAL, "1"),
                 EventUi(EventsEnum.CORNERS, "6"),

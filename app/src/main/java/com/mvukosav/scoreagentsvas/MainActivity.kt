@@ -80,8 +80,8 @@ fun ScoreAgentsApp(
             LoginScreen()
         }
         composable("match_details/?matchId={matchId}", arguments = listOf(navArgument("matchId") {
-            type = NavType.IntType
-            defaultValue = -1
+            type = NavType.StringType
+            defaultValue = "-1"
         })) {
             MatchDetailsScreen(navController = navControler)
         }

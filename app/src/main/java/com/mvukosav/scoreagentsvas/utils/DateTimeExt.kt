@@ -1,5 +1,6 @@
 package com.mvukosav.scoreagentsvas.utils
 
+import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
@@ -58,13 +59,19 @@ fun getTime(startTime: String): String {
 }
 
 fun timeUntilMatchStart(startTime: String): Long? {
-    val dateFormat = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
-    val matchDate = dateFormat.parse(startTime)
-    val currentDate = Calendar.getInstance().time
+    val dateFormat = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault()) // Adjusted format
+    return try {
+        val matchDate = dateFormat.parse(startTime)
+        val currentDate = Calendar.getInstance().time
 
-    return if (matchDate != null && currentDate.before(matchDate)) {
-        matchDate.time - currentDate.time // Time in milliseconds until match start
-    } else {
-        null // Match has already started or invalid start time
+        if (matchDate != null && currentDate.before(matchDate)) {
+            matchDate.time - currentDate.time // Time in milliseconds until match start
+        } else {
+            null // Match has already started or invalid start time
+        }
+    } catch (e: ParseException) {
+        e.printStackTrace()
+        null
     }
 }
+

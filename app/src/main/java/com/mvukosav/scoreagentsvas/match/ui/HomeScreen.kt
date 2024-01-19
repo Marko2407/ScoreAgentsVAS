@@ -104,7 +104,7 @@ fun ErrorScreen(state: HomeScreenState.Error) {
 fun Matches(state: UiData) {
     Column(
         modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         LazyColumn {
@@ -120,12 +120,12 @@ fun Matches(state: UiData) {
                             .padding(top = 5.dp)
                     ) {
                         Text(
-                            text = it.league,
+                            text = it.league.toString(),
                             modifier = Modifier.padding(start = 10.dp),
                             fontWeight = FontWeight.Bold
                         )
                     }
-                    it.match.forEach {
+                    it.match?.forEach {
                         MatchItem(item = it)
                     }
                     Spacer(modifier = Modifier.height(10.dp))
@@ -141,6 +141,6 @@ data class UiData(
 )
 
 data class UiMatches(
-    val league: String,
-    val match: ImmutableList<UiMatch>
+    val league: String?,
+    val match: ImmutableList<UiMatch>?
 )

@@ -5,6 +5,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
+    id("com.apollographql.apollo3") version "3.8.2"
 }
 
 android {
@@ -86,11 +87,9 @@ dependencies {
 
     implementation("org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.5")
     implementation("com.google.accompanist:accompanist-placeholder-material:0.32.0")
-//
-//    //JADE
-//    implementation("com.github.Lamba92", "jade-modern-agent", "1.2.2")
-//    implementation("commons-codec", "commons-codec", "1.9")
-//    implementation("com.tilab.jade", "jade", "4.6.0")
+
+
+    implementation("com.apollographql.apollo3:apollo-runtime:3.8.2")
 
     //notification
     implementation("com.google.accompanist:accompanist-permissions:0.31.1-alpha")
@@ -102,7 +101,13 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
 }
 kapt {
     correctErrorTypes = true
+}
+apollo {
+    service("service") {
+        packageName.set("com.mvukosav.scoreagentsvas")
+    }
 }

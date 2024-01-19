@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class FavoriteMatches @Inject constructor(private val matchesRepository: MatchesRepository) {
 
-    operator fun invoke(): Flow<List<Int?>?> =
+    operator fun invoke(): Flow<List<String?>?> =
         matchesRepository.favoriteMatchesMutableFlow.distinctUntilChanged { old, new ->
             Log.d("LOLOLO_INVOKE_FAVO", "old $old, new $new")
             old == new
