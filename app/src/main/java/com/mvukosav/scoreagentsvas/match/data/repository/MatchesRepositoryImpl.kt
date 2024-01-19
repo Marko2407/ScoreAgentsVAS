@@ -1,41 +1,33 @@
 package com.mvukosav.scoreagentsvas.match.data.repository
 
 import android.content.Context
+import android.net.ConnectivityManager
+import android.net.Network
+import android.net.NetworkCapabilities
+import android.net.NetworkRequest
 import android.util.Log
 import com.apollographql.apollo3.api.Optional
-import com.google.gson.Gson
 import com.mvukosav.scoreagentsvas.AddToFavoriteMutation
 import com.mvukosav.scoreagentsvas.CurrentOfferQuery
 import com.mvukosav.scoreagentsvas.GetFavoriteMatchesQuery
 import com.mvukosav.scoreagentsvas.MatchDetailsQuery
-import com.mvukosav.scoreagentsvas.R
 import com.mvukosav.scoreagentsvas.match.data.repository.SharedMatchesRepository.addToFavorite
+import com.mvukosav.scoreagentsvas.match.data.repository.SharedMatchesRepository.connectivityManager
+import com.mvukosav.scoreagentsvas.match.data.repository.SharedMatchesRepository.getLivescore
+import com.mvukosav.scoreagentsvas.match.data.repository.SharedMatchesRepository.lastKnownMatchDetailId
 import com.mvukosav.scoreagentsvas.match.data.repository.SharedMatchesRepository.livescores
+import com.mvukosav.scoreagentsvas.match.data.repository.SharedMatchesRepository.matchDetailsMutableFlow
+import com.mvukosav.scoreagentsvas.match.data.repository.SharedMatchesRepository.notificationService
 import com.mvukosav.scoreagentsvas.match.data.repository.SharedMatchesRepository.repositoryScope
 import com.mvukosav.scoreagentsvas.match.domain.model.livescores.CurrentOfferGraphQL
-import com.mvukosav.scoreagentsvas.match.domain.model.livescores.Livescores
-import com.mvukosav.scoreagentsvas.match.domain.model.livescores.LivescoresDTH
-import com.mvukosav.scoreagentsvas.match.domain.model.livescores.LivescoresItem
-import com.mvukosav.scoreagentsvas.match.domain.model.livescores.MatchLiveScore
 import com.mvukosav.scoreagentsvas.match.domain.model.livescores.MatchLiveScoreGraphQL
-import com.mvukosav.scoreagentsvas.match.domain.model.livescores.MatchPreviewContentGraph
 import com.mvukosav.scoreagentsvas.match.domain.model.livescores.MatchPreviewGraphQL
-import com.mvukosav.scoreagentsvas.match.domain.model.livescores.Stage
 import com.mvukosav.scoreagentsvas.match.domain.model.livescores.Status
-import com.mvukosav.scoreagentsvas.match.domain.model.matchdetails.Event
-import com.mvukosav.scoreagentsvas.match.domain.model.matchdetails.EventUi
-import com.mvukosav.scoreagentsvas.match.domain.model.matchdetails.EventsEnum
 import com.mvukosav.scoreagentsvas.match.domain.model.matchdetails.EventsUi
-import com.mvukosav.scoreagentsvas.match.domain.model.matchdetails.MatchDetail
-import com.mvukosav.scoreagentsvas.match.domain.model.matchdetails.MatchDetailDto
-import com.mvukosav.scoreagentsvas.match.domain.model.matchdetails.MatchDetailsListDTO
-import com.mvukosav.scoreagentsvas.match.domain.model.matchdetails.MatchPreviewContent
-import com.mvukosav.scoreagentsvas.match.domain.model.matchdetails.PreviewContent
-import com.mvukosav.scoreagentsvas.match.domain.model.matchpreview.MatchPreviewDTO
-import com.mvukosav.scoreagentsvas.match.domain.model.matchpreview.MatchPreviewListDTO
 import com.mvukosav.scoreagentsvas.match.domain.model.prematches.Match
 import com.mvukosav.scoreagentsvas.match.domain.repository.MatchesRepository
 import com.mvukosav.scoreagentsvas.match.domain.usecase.AddFavoriteMatches
+import com.mvukosav.scoreagentsvas.match.domain.usecase.GetMatchDetails
 import com.mvukosav.scoreagentsvas.match.domain.usecase.RefreshLivescores
 import com.mvukosav.scoreagentsvas.service.AgentsNotificationService
 import com.mvukosav.scoreagentsvas.utils.Notification
@@ -57,18 +49,15 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
-import kotlin.random.Random
 
 class MatchesRepositoryImpl @Inject constructor(
     private val context: Context,
@@ -79,7 +68,7 @@ class MatchesRepositoryImpl @Inject constructor(
         MutableStateFlow(listOf(null))
     override val livescoresFlow: StateFlow<List<CurrentOfferGraphQL?>?> = _livescoresMutableFlow
 
-    private val _favoriteMatchesMutableFlow: MutableStateFlow<MutableList<String>> =
+    private val _favoriteMatchesMutableFlow: MutableStateFlow<MutableList<String?>> =
         MutableStateFlow(mutableListOf())
     override val favoriteMatchesMutableFlow: StateFlow<List<String?>> = _favoriteMatchesMutableFlow
 
@@ -88,23 +77,25 @@ class MatchesRepositoryImpl @Inject constructor(
     override val matchDetailsMutableFlow: StateFlow<MatchLiveScoreGraphQL?> =
         _matchDetailsMutableFlow
 
-    private var matchDetailsDto: MatchDetailsListDTO? = null
-    private var matchDetailsPreviewDto: MatchPreviewListDTO? = null
-
     private val repositoryScope = CoroutineScope(Dispatchers.IO + SupervisorJob())
     private var container: ContainerController? = null
-
+    private var matchDetailcontainer: ContainerController? = null
 
     init {
         repositoryScope.launch(Dispatchers.Default) {
             _livescoresMutableFlow.value = getLiveScores()
         }
-        SharedMatchesRepository.livescores = _livescoresMutableFlow
-        SharedMatchesRepository.getLivescore = RefreshLivescores(this)
-        SharedMatchesRepository.notificationService = agentsNotificationService
+        livescores = _livescoresMutableFlow
+        notificationService = agentsNotificationService
+        getLivescore = RefreshLivescores(this)
+        addToFavorite = AddFavoriteMatches(this)
         SharedMatchesRepository.repositoryScope = repositoryScope
-        SharedMatchesRepository.addToFavorite = AddFavoriteMatches(this)
         SharedMatchesRepository.favoriteMatchesMutableFlow = _favoriteMatchesMutableFlow
+        SharedMatchesRepository.connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        SharedMatchesRepository.getMatchDetails = GetMatchDetails(this)
+        SharedMatchesRepository.matchDetailsMutableFlow = _matchDetailsMutableFlow
+
         startAgents()
     }
 
@@ -126,16 +117,26 @@ class MatchesRepositoryImpl @Inject constructor(
                     emit(null)
                     _livescoresMutableFlow.emit(null)
                 }
-        val favList = mutableListOf<String>()
+        val favList = mutableListOf<String?>()
 
-        val r =
-            GraphQlManager.apolloClient().query((GetFavoriteMatchesQuery("test"))).toFlow().first()
-        if (r.data?.favoriteMatches?.match?.isNotEmpty() == true) {
-
-            r.data?.favoriteMatches?.match?.map {
-                favList.add(it?._id.toString())
+        try {
+            val r =
+                GraphQlManager.apolloClient().query((GetFavoriteMatchesQuery("test"))).toFlow()
+                    .first()
+            if (r.hasErrors()) {
+                _favoriteMatchesMutableFlow.emit(mutableListOf(null))
+            } else {
+                if (r.data?.favoriteMatches != null) {
+                    r.data?.favoriteMatches?.match?.map {
+                        favList.add(it?._id.toString())
+                    }
+                    _favoriteMatchesMutableFlow.emit(favList)
+                } else {
+                    _favoriteMatchesMutableFlow.emit(favList)
+                }
             }
-            _favoriteMatchesMutableFlow.emit(favList)
+        } catch (e: Exception) {
+            println(e.message)
         }
 
 
@@ -181,34 +182,6 @@ class MatchesRepositoryImpl @Inject constructor(
                         )
                     )
                 }
-            )
-        }
-    }
-
-    private fun mapHomeEvent(homeEvents: List<CurrentOfferQuery.HomeEvent?>?): List<EventUi>? {
-        return homeEvents?.map { event ->
-            EventUi(
-                name = EventsEnum.fromName(event?.name?.name),
-                number = event?.number ?: "0"
-            )
-        }
-    }
-
-    private fun mapAwayEvent(awayEvents: List<CurrentOfferQuery.AwayEvent?>?): List<EventUi>? {
-        return awayEvents?.map { event ->
-            EventUi(
-                name = EventsEnum.fromName(event?.name?.name),
-                number = event?.number ?: "0"
-            )
-        }
-    }
-
-    private fun mapPreviewContent(previewContent: List<CurrentOfferQuery.PreviewContent?>?): List<MatchPreviewContentGraph>? {
-        return previewContent?.map { preview ->
-            MatchPreviewContentGraph(
-                id = preview?._id,
-                content = preview?.content,
-                name = preview?.name
             )
         }
     }
@@ -299,40 +272,17 @@ class MatchesRepositoryImpl @Inject constructor(
         }
     }
 
-    private fun mapHomeEventMatch(homeEvents: List<MatchDetailsQuery.HomeEvent?>?): List<EventUi>? {
-        return homeEvents?.map { event ->
-            EventUi(
-                name = EventsEnum.fromName(event?.name?.name),
-                number = event?.number ?: "0"
-            )
-        }
-    }
-
-    private fun mapAwayEventMatch(awayEvents: List<MatchDetailsQuery.AwayEvent?>?): List<EventUi>? {
-        return awayEvents?.map { event ->
-            EventUi(
-                name = EventsEnum.fromName(event?.name?.name),
-                number = event?.number ?: "0"
-            )
-        }
-    }
-
-    private fun mapPreviewContentMatch(previewContent: List<MatchDetailsQuery.PreviewContent?>?): List<MatchPreviewContentGraph>? {
-        return previewContent?.map { preview ->
-            MatchPreviewContentGraph(
-                id = preview?._id,
-                content = preview?.content,
-                name = preview?.name
-            )
-        }
-    }
-
-    override suspend fun changeMatchStatus(matchId: String) {
-    }
-
-
     override fun clearAgent() {
         stopAgent()
+        stopMatchDetailAgent()
+    }
+
+    override fun startMatchDetailsAgent(matchId: String) {
+        startPrematchAgents(matchDetail = matchId)
+    }
+
+    override fun stopMatchDetailsAgent() {
+        stopMatchDetailAgent()
     }
 
     private fun stopAgent() {
@@ -340,6 +290,16 @@ class MatchesRepositoryImpl @Inject constructor(
             try {
                 container?.kill()
                 repositoryScope.cancel()
+            } catch (e: Exception) {
+                println(e.message)
+            }
+        }
+    }
+
+    private fun stopMatchDetailAgent() {
+        repositoryScope.launch(Dispatchers.IO) {
+            try {
+                matchDetailcontainer?.kill()
             } catch (e: Exception) {
                 println(e.message)
             }
@@ -370,7 +330,15 @@ class MatchesRepositoryImpl @Inject constructor(
                         Pair(
                             "FavoriteMatchObserverAgent",
                             FavoriteMatchObserverAgent::class.java.name
-                        )  // agent za favorite matches
+                        ),  // agent za favorite matches
+                        Pair(
+                            "NetworkObserverAgent",
+                            NetworkAgent::class.java.name
+                        ),  // agent za network
+                        Pair(
+                            "GeneralManagerAgent",
+                            GeneralManagerAgent::class.java.name
+                        )  // General agent
                     )
 
                     // Create and start each agent
@@ -389,15 +357,42 @@ class MatchesRepositoryImpl @Inject constructor(
             }
         }
     }
+
+    private fun startPrematchAgents(matchDetail: String) {
+        SharedMatchesRepository.lastKnownMatchDetailId = matchDetail
+        repositoryScope.launch {
+            withContext(Dispatchers.IO) {
+                try {
+                    val runtime = Runtime.instance()
+                    val writableDir = context.filesDir.path
+                    val profile = ProfileImpl().apply {
+                        setParameter(Profile.FILE_DIR, writableDir)
+                    }
+
+                    matchDetailcontainer = runtime.createMainContainer(profile)
+
+                    val agentController = container?.createNewAgent(
+                        "MatchDetailDataFetchAgent",
+                        MatchDetailDataFetchAgent::class.java.name,
+                        null
+                    )
+                    agentController?.start()
+
+                } catch (e: Exception) {
+                    Log.e("JADE", "Exception in agent setup", e)
+                }
+            }
+        }
+    }
 }
 
 class LiveScoresDataFetchAgent : Agent() {
     override fun setup() {
-        addBehaviour(object : TickerBehaviour(this, 60000) {
+        addBehaviour(object : TickerBehaviour(this, 30000) {
             override fun onTick() {
                 repositoryScope.launch {
                     try {
-                        val matches = SharedMatchesRepository.getLivescore()
+                        val matches = getLivescore()
                         livescores.emit(matches)
                         Log.d("LOLOLOLO_AGENT", matches.toString())
                         sendMessageToPrematchesDataFetchAgent("Bok refreshao sam LIVESCORE ")
@@ -407,12 +402,32 @@ class LiveScoresDataFetchAgent : Agent() {
                 }
             }
         })
-
         addBehaviour(object : CyclicBehaviour(this) {
             override fun action() {
                 val receivedMsg = receive()
                 if (receivedMsg != null) {
                     onMessageReceived(receivedMsg)
+                    if (receivedMsg.sender.name.contains("GeneralManagerAgent") && receivedMsg.content == "Re-fetch data") {
+                        repositoryScope.launch {
+                            try {
+                                Log.d("LiveScoresDataFetchAgent", "Get order from GM")
+                                val matches = getLivescore()
+                                livescores.emit(matches)
+                            } catch (e: Exception) {
+                                Log.e("LiveScoresDataFetchAgent", "Error fetching livescores", e)
+                            }
+                        }
+                    } else if (receivedMsg.sender.name.contains("MatchDetailDataFetchAgent")) {
+                        repositoryScope.launch {
+                            try {
+                                Log.d("LiveScoresDataFetchAgent", "Get order from match details")
+                                val matches = getLivescore()
+                                livescores.emit(matches)
+                            } catch (e: Exception) {
+                                Log.e("LiveScoresDataFetchAgent", "Error fetching livescores", e)
+                            }
+                        }
+                    }
                 } else {
                     block()
                 }
@@ -430,28 +445,92 @@ class LiveScoresDataFetchAgent : Agent() {
 
     private fun sendMessageToPrematchesDataFetchAgent(content: String) {
         val message = ACLMessage(ACLMessage.INFORM)
-        message.addReceiver(AID("PrematchesDataFetchAgent", AID.ISLOCALNAME))
+        message.content = content
+        send(message)
+    }
+}
+
+class MatchDetailDataFetchAgent : Agent() {
+    private var lastEmittedMatchDetails: MatchLiveScoreGraphQL? = null
+    override fun setup() {
+        addBehaviour(object : TickerBehaviour(this, 30000) {
+            override fun onTick() {
+                repositoryScope.launch {
+                    try {
+                        val matches =
+                            SharedMatchesRepository.getMatchDetails(lastKnownMatchDetailId)
+                        matchDetailsMutableFlow.emit(matches)
+                        Log.d("MatchDetailDataFetchAgent", matches.toString())
+                        if (matches != lastEmittedMatchDetails) {
+                            matchDetailsMutableFlow.emit(matches)
+                            lastEmittedMatchDetails = matches
+                            sendMessage(
+                                "Bok refreshao sam match details",
+                                "LiveScoresDataFetchAgent"
+                            )
+                        }
+                    } catch (e: Exception) {
+                        Log.e("MatchDetailDataFetchAgent", "Error fetching livescores", e)
+                    }
+                }
+            }
+        })
+        addBehaviour(object : CyclicBehaviour(this) {
+            override fun action() {
+                val receivedMsg = receive()
+                if (receivedMsg != null) {
+                    onMessageReceived(receivedMsg)
+                    if (receivedMsg.sender.name.contains("GeneralManagerAgent") && receivedMsg.content == "Re-fetch data") {
+                        repositoryScope.launch {
+                            try {
+                                Log.d("MatchDetailDataFetchAgent", "Get order from GM")
+                                val matches =
+                                    SharedMatchesRepository.getMatchDetails(lastKnownMatchDetailId)
+                                matchDetailsMutableFlow.emit(matches)
+                            } catch (e: Exception) {
+                                Log.e("MatchDetailDataFetchAgent", "Error fetching livescores", e)
+                            }
+                        }
+                    }
+                } else {
+                    block()
+                }
+            }
+        })
+    }
+
+    override fun takeDown() {
+        println("Agent is being destroyed")
+    }
+
+    private fun onMessageReceived(message: ACLMessage) {
+        println("Received message: ${message.content}")
+    }
+
+    private fun sendMessage(content: String, agentName: String) {
+        val message = ACLMessage(ACLMessage.INFORM)
+        message.addReceiver(AID(agentName, AID.ISLOCALNAME))
         message.content = content
         send(message)
     }
 }
 
 class FavoriteMatchObserverAgent : Agent() {
-    val favoriteList = mutableListOf<String>()
+    val favoriteList = mutableListOf<String?>()
     private var notificationCurrentList = mutableListOf<NotificationFavoriteMatch>()
     private var notificationBeginningList = mutableListOf<FavoriteMatch>()
+    private var notificationFinishedList = mutableListOf<FavoriteMatch>()
     override fun setup() {
         addBehaviour(object : TickerBehaviour(this, 5000) {
             override fun onTick() {
                 repositoryScope.launch {
                     try {
                         val newlist = SharedMatchesRepository.favoriteMatchesMutableFlow.value
-                        Log.d("LOLOLO_AGENT_NOTIF", "list $newlist")
+                        // Ako favorit lista ne sadrzi sve isto kao i new list znaci da se desila promjena te observaj
                         if (!favoriteList.containsAll(newlist)) {
                             matchNotifyObserver()
                             favoriteList.addAll(newlist)
                         }
-                        Log.d("LOLOLO_AGENT_NOTIF", "favoriteList $favoriteList")
                     } catch (e: Exception) {
                         Log.e("LiveScoresDataFetchAgent", "Error fetching livescores", e)
                     }
@@ -459,9 +538,34 @@ class FavoriteMatchObserverAgent : Agent() {
             }
         })
 
-        addBehaviour(object : TickerBehaviour(this, 20000) {
+        addBehaviour(object : TickerBehaviour(this, 10000) {
             override fun onTick() {
                 matchNotifyObserver()
+            }
+        })
+
+        addBehaviour(object : CyclicBehaviour(this) {
+            override fun action() {
+                val receivedMsg = receive()
+                if (receivedMsg != null) {
+                    onMessageReceived(receivedMsg)
+                    if (receivedMsg.sender.name.contains("GeneralManagerAgent") && receivedMsg.content == "Re-fetch data") {
+                        repositoryScope.launch {
+                            try {
+                                Log.d("matchNotifyObserver", "Get order from GM")
+                                matchNotifyObserver()
+                            } catch (e: Exception) {
+                                Log.e(
+                                    "matchNotifyObserver",
+                                    "Error observing matchNotifyObserver",
+                                    e
+                                )
+                            }
+                        }
+                    }
+                } else {
+                    block()
+                }
             }
         })
     }
@@ -483,42 +587,42 @@ class FavoriteMatchObserverAgent : Agent() {
 
                 if (matches.isEmpty()) return@launch
                 val finishedMatch = matches.filter { it.status == Status.FINISHED }
-                val startedMatch =
-                    matches.filter { getTime(it.startTime) != "" }
+                val prematch = matches.filter { getTime(it.startTime) != "" }
 
-                finishedMatch.forEach {
+                finishedMatch.forEach { favMatch ->
                     val n =
-                        notificationCurrentList.filter { n -> it.matchId == n.match.matchId }
+                        notificationFinishedList.filter { n -> favMatch == n }
                     if (n.isEmpty()) {
-                        val winner = if (it.winner?.contains("home") == true) {
-                            "za " + it.home
-                        } else if (it.winner?.contains("away") == true) {
-                            "za " + it.away
+                        val winner = if (favMatch.winner?.contains("home") == true) {
+                            "za " + favMatch.home
+                        } else if (favMatch.winner?.contains("away") == true) {
+                            "za " + favMatch.away
                         } else {
                             ""
                         }
 
                         val notification = Notification(
-                            id = it.matchId,
-                            title = "Utakmica ${it.home} - ${it.away} je zavrsila",
-                            content = "Rezultat je ${it.goals} $winner"
+                            id = favMatch.matchId,
+                            title = "Utakmica ${favMatch.home} - ${favMatch.away} je zavrsila",
+                            content = "Rezultat je ${favMatch.goals} $winner"
                         )
                         val message = objectToJson(notification)
                         sendMessageToNotificationAgent(message)
-                        notificationCurrentList.add(
-                            NotificationFavoriteMatch(
-                                it,
-                                getTime(it.startTime)
-                            )
-                        )
-                        addToFavorite(it.matchId)
+                        notificationFinishedList.add(favMatch)
+                        // ako je utakmica prosla
+                        if (favMatch.isFavorite) {
+                            addToFavorite(favMatch.matchId)
+                            notificationFinishedList.removeIf { it == favMatch }
+                            notificationBeginningList.removeIf { it == favMatch }
+                        }
                     }
                 }
-                if (startedMatch.isNotEmpty()) {
-                    startedMatch.forEach {
+                if (prematch.isNotEmpty()) {
+                    prematch.forEach {
                         val n =
                             notificationCurrentList.filter { n -> it.matchId == n.match.matchId }
-                        if (n.isEmpty()) {
+
+                        if (n.isEmpty()) { // notifikacija nikad nije bila
                             val notification = Notification(
                                 id = it.matchId,
                                 title = "Utakmica ${it.home} - ${it.away}",
@@ -534,7 +638,6 @@ class FavoriteMatchObserverAgent : Agent() {
                             )
                         } else {
                             //notifikacija je vec poslana
-                            Log.d("LOLOLO_N", "n je $n")
                             val remainingToMatchTime =
                                 parseTimeFormattedString(getTime(n[0].match.startTime)) // time until matc
                             val notificationTime =
@@ -561,8 +664,6 @@ class FavoriteMatchObserverAgent : Agent() {
                                     notificationBeginningList.add(it)
                                 }
                                 n[0].notificationTime = getTime(n[0].match.startTime)
-                            } else {
-
                             }
                         }
                     }
@@ -604,7 +705,8 @@ class FavoriteMatchObserverAgent : Agent() {
                             away = match.awayTeam ?: "",
                             status = match.status ?: Status.UNKNOWN,
                             winner = match.winner,
-                            goals = match.goals ?: "0:0"
+                            goals = match.goals ?: "0:0",
+                            isFavorite = match.isFavorite
                         )
                     )
                 }
@@ -617,16 +719,11 @@ class FavoriteMatchObserverAgent : Agent() {
 
 // Agent za notifikacije
 class NotificationsAgent : Agent() {
-    val notificationList = mutableListOf<NotificationFavoriteMatch>()
-
     override fun setup() {
-        Log.d("MARKOAGENT", " SLOZEN je $this")
         addBehaviour(object : CyclicBehaviour(this) {
             override fun action() {
                 val receivedMsg = receive()
-                Log.d("LOLOLO_ANO", "poruka $receivedMsg")
                 if (receivedMsg != null) {
-                    Log.d("LOLOLO_ANO", "ime ${receivedMsg.sender.name} ")
                     if (receivedMsg.sender.name.contains("FavoriteMatchObserverAgent")) {
                         val data = jsonToObject(receivedMsg.content)
                         SharedMatchesRepository.notificationService.showNotification(
@@ -635,7 +732,6 @@ class NotificationsAgent : Agent() {
                             data.id
                         )
                     }
-
                 } else {
                     block()
                 }
@@ -643,11 +739,104 @@ class NotificationsAgent : Agent() {
         })
     }
 
-
     override fun takeDown() {
         println("Agent is being destroyed")
     }
 }
+
+class NetworkAgent : Agent() {
+    var isAvailable = false
+    var hasGone = false
+    override fun setup() {
+        addBehaviour(object : TickerBehaviour(this, 3000) {
+            override fun onTick() {
+                val networkRequest = NetworkRequest.Builder()
+                    .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+                    .build()
+
+                connectivityManager.registerNetworkCallback(
+                    networkRequest,
+                    object : ConnectivityManager.NetworkCallback() {
+                        override fun onAvailable(network: Network) {
+                            super.onAvailable(network)
+                            if (isAvailable) {
+                                //Pozovi GM agenta
+                                sendMessageToAgent("fetch", "GeneralManagerAgent")
+                                Log.d("NETWOKR_AVAI_D", network.toString())
+                                isAvailable = false
+                            }
+                            hasGone = false
+                        }
+
+                        override fun onLost(network: Network) {
+                            super.onLost(network)
+                            if (!hasGone) {
+                                //Pokazi prazan skreen sa por.
+                                repositoryScope.launch {
+                                    matchDetailsMutableFlow.emit(null)
+                                    livescores.emit(null)
+                                }
+                                Log.d("NETWOKR_AVAI_N", network.toString())
+                                hasGone = true
+                            }
+                            isAvailable = true
+                        }
+                    })
+            }
+        })
+    }
+
+    override fun takeDown() {
+        println("Agent is being destroyed")
+    }
+
+    private fun sendMessageToAgent(content: String, agentName: String) {
+        val message = ACLMessage(ACLMessage.INFORM)
+        message.addReceiver(AID(agentName, AID.ISLOCALNAME))
+        message.content = content
+        send(message)
+    }
+}
+
+class GeneralManagerAgent : Agent() {
+    override fun setup() {
+        addBehaviour(object : CyclicBehaviour(this) {
+            override fun action() {
+                val receivedMsg = receive()
+                if (receivedMsg != null) {
+                    if (receivedMsg.content == "fetch") {
+                        sendMessageToNotificationAgent(
+                            content = "Re-fetch data",
+                            "LiveScoresDataFetchAgent"
+                        )
+                        sendMessageToNotificationAgent(
+                            content = "Re-fetch data",
+                            "FavoriteMatchObserverAgent"
+                        )
+                        sendMessageToNotificationAgent(
+                            content = "Re-fetch data",
+                            "MatchDetailDataFetchAgent"
+                        )
+                    }
+                } else {
+                    block()
+                }
+            }
+        })
+    }
+
+    override fun takeDown() {
+        println("Agent is being destroyed")
+    }
+
+    private fun sendMessageToNotificationAgent(content: String, agentName: String) {
+        val message = ACLMessage(ACLMessage.INFORM)
+        message.addReceiver(AID(agentName, AID.ISLOCALNAME))
+        message.content = content
+        send(message)
+    }
+}
+
 
 object SharedMatchesRepository {
     lateinit var repositoryScope: CoroutineScope
@@ -656,129 +845,16 @@ object SharedMatchesRepository {
     lateinit var getLivescore: RefreshLivescores
     lateinit var livescores: MutableStateFlow<List<CurrentOfferGraphQL?>?>
 
+    lateinit var getMatchDetails: GetMatchDetails
+    lateinit var matchDetailsMutableFlow: MutableStateFlow<MatchLiveScoreGraphQL?>
+
     lateinit var addToFavorite: AddFavoriteMatches
     lateinit var notificationService: AgentsNotificationService
-    lateinit var favoriteMatchesMutableFlow: MutableStateFlow<MutableList<String>>
+    lateinit var favoriteMatchesMutableFlow: MutableStateFlow<MutableList<String?>>
+    lateinit var connectivityManager: ConnectivityManager
+    var lastKnownMatchDetailId: String = "-"
 }
 
-class DataToDomainLiveScores @Inject constructor() {
-    operator fun invoke(data: LivescoresDTH?, listOfFavorite: List<Int>): Livescores {
-        val liveScoresItem = data?.map { liveScoresItem ->
-            LivescoresItem(
-                country = liveScoresItem.country,
-                league_id = liveScoresItem.league_id,
-                league_name = liveScoresItem.league_name,
-                stage = liveScoresItem.stage.map { stage ->
-                    Stage(
-                        matches = stage.matches.filter { it.match_preview.excitement_rating > 6.0 }
-                            .map { match ->
-                                MatchLiveScore(
-                                    date = match.date,
-                                    goals = match.goals,
-                                    has_extra_time = match.has_extra_time,
-                                    has_penalties = match.has_penalties,
-                                    id = match.id,
-                                    match_preview = match.match_preview,
-                                    minute = match.minute,
-                                    odds = match.odds,
-                                    stadium = match.stadium,
-                                    status = match.status,
-                                    teams = match.teams,
-                                    time = match.time,
-                                    winner = match.winner,
-                                    isFavorite = listOfFavorite.contains(match.id)
-                                )
-                            },
-                        stage_id = stage.stage_id,
-                        stage_name = stage.stage_name
-                    )
-                }
-            )
-        }
-        return Livescores(liveScoresItem?.toMutableList() ?: mutableListOf())
-    }
-}
-
-class DataToDomainMatchDetails @Inject constructor() {
-    operator fun invoke(
-        data: MatchDetailDto?,
-        listOfFavorite: List<Int>,
-        matchPreviewDTO: MatchPreviewDTO?
-    ): MatchDetail? {
-        return if (data != null) {
-            MatchDetail(
-                id = data.id,
-                startTime = "${data.date} ${data.time}",
-                league = data.league,
-                homeTeam = data.teams.home.name,
-                awayTeam = data.teams.away.name,
-                status = Status.fromName(data.status),
-                minute = data.minute,
-                winner = data.winner,
-                goals = "${data.goals.home_ft_goals}:${data.goals.away_ft_goals}",
-                events = mapEvents(data.events),
-                oddsHome = data.odds.match_winner.home,
-                oddsAway = data.odds.match_winner.away,
-                oddsDraw = data.odds.match_winner.draw,
-                excitementRating = data.match_preview.excitement_rating.toString(),
-                isFavorite = listOfFavorite.contains(data.id),
-                matchPreview = mapMatchPreview(matchPreviewDTO)
-            )
-        } else null
-    }
-
-    private fun mapEvents(events: List<Event>): EventsUi {
-        val yellowHomeCard =
-            events.filter { it.event_type == EventsEnum.YELLOW_CARD.nameEvent && it.team == EventsEnum.HOME.nameEvent }
-        val yellowAwayCard =
-            events.filter { it.event_type == EventsEnum.YELLOW_CARD.nameEvent && it.team == EventsEnum.AWAY.nameEvent }
-
-        val redHomeCard =
-            events.filter { it.event_type == EventsEnum.RED_CARD.nameEvent || it.event_type == "yellow_red_card" && it.team == EventsEnum.HOME.nameEvent }
-        val redAwayCard =
-            events.filter { it.event_type == EventsEnum.RED_CARD.nameEvent || it.event_type == "yellow_red_card" && it.team == EventsEnum.AWAY.nameEvent }
-
-        val penaltyHomeGoals =
-            events.filter { it.event_type == EventsEnum.PENAL.nameEvent && it.team == EventsEnum.HOME.nameEvent }
-        val penaltyAwayGoals =
-            events.filter { it.event_type == EventsEnum.PENAL.nameEvent && it.team == EventsEnum.AWAY.nameEvent }
-
-        val subsHome =
-            events.filter { it.event_type == EventsEnum.SUBS.nameEvent && it.team == EventsEnum.HOME.nameEvent }
-        val subsAway =
-            events.filter { it.event_type == EventsEnum.SUBS.nameEvent && it.team == EventsEnum.AWAY.nameEvent }
-
-        val cornersHome = Random.nextInt(0, 10).toString()
-        val cornersAway = Random.nextInt(0, 10).toString()
-
-        return EventsUi(
-            home = listOf(
-                EventUi(EventsEnum.PENAL, penaltyHomeGoals.size.toString()),
-                EventUi(EventsEnum.CORNERS, cornersHome),
-                EventUi(EventsEnum.YELLOW_CARD, yellowHomeCard.size.toString()),
-                EventUi(EventsEnum.RED_CARD, redHomeCard.size.toString()),
-                EventUi(EventsEnum.SUBS, subsHome.size.toString())
-            ),
-            away = listOf(
-                EventUi(EventsEnum.PENAL, penaltyAwayGoals.size.toString()),
-                EventUi(EventsEnum.CORNERS, cornersAway),
-                EventUi(EventsEnum.YELLOW_CARD, yellowAwayCard.size.toString()),
-                EventUi(EventsEnum.RED_CARD, redAwayCard.size.toString()),
-                EventUi(EventsEnum.SUBS, subsAway.size.toString())
-            ),
-        )
-    }
-
-    private fun mapMatchPreview(matchPreviewDTO: MatchPreviewDTO?): MatchPreviewContent? {
-        return if (matchPreviewDTO != null) {
-            MatchPreviewContent(
-                id = matchPreviewDTO.id,
-                preview_content = matchPreviewDTO.preview_content.map {
-                    PreviewContent(content = it.content, name = it.name)
-                })
-        } else null
-    }
-}
 
 /**
 Agent za provjeru favorit matcheva - Pocetak, kraj tekme, ukoliko se desi kraj onda mora izbrisati iz liste favorit match (done), salje poruku za notifikacije
@@ -817,6 +893,7 @@ data class FavoriteMatch(
     val status: Status,
     val winner: String?,
     val goals: String,
+    val isFavorite: Boolean = false
 )
 
 data class NotificationFavoriteMatch(

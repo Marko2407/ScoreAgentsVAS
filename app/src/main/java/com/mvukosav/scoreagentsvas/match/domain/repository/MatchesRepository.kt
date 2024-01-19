@@ -26,5 +26,8 @@ interface MatchesRepository {
 
     fun clearAgent()
 
-    suspend fun changeMatchStatus(matchId: String)
+    fun startMatchDetailsAgent(matchId: String)
+
+    fun stopMatchDetailsAgent()
+
 }

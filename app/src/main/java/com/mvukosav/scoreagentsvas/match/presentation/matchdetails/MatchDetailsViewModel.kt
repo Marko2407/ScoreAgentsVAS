@@ -8,9 +8,10 @@ import androidx.lifecycle.viewModelScope
 import com.mvukosav.scoreagentsvas.match.domain.model.livescores.MatchLiveScoreGraphQL
 import com.mvukosav.scoreagentsvas.match.domain.model.livescores.Status
 import com.mvukosav.scoreagentsvas.match.domain.usecase.AddFavoriteMatches
-import com.mvukosav.scoreagentsvas.match.domain.usecase.ChangeMatchStatus
 import com.mvukosav.scoreagentsvas.match.domain.usecase.GetMatchDetails
 import com.mvukosav.scoreagentsvas.match.domain.usecase.MatchDetailsFlowUseCase
+import com.mvukosav.scoreagentsvas.match.domain.usecase.StartMatchDetailsAgent
+import com.mvukosav.scoreagentsvas.match.domain.usecase.StopMatchDetailsAgent
 import com.mvukosav.scoreagentsvas.match.ui.UiOdds
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -25,7 +26,8 @@ class MatchDetailsViewModel @Inject constructor(
     private val addFavoriteMatches: AddFavoriteMatches,
     private val getMatchDetails: GetMatchDetails,
     private val matchDetails: MatchDetailsFlowUseCase,
-    private val changeMatchStatus: ChangeMatchStatus
+    private val startMatchDetailsAgent: StartMatchDetailsAgent,
+    private val stopMatchDetailsAgent: StopMatchDetailsAgent
 ) : ViewModel() {
 
     private val _state: MutableStateFlow<MatchDetailsScreenState> =
@@ -40,6 +42,7 @@ class MatchDetailsViewModel @Inject constructor(
                 //get match and save with this id
                 Log.d("LOLOLO_Match", "MATCH ID : $matchId")
                 currentMatchId = matchId
+                startMatchDetailsAgent(matchId)
                 viewModelScope.launch {
                     _state.emit(MatchDetailsScreenState.Loading)
                     getMatchDetails(matchId)
@@ -47,6 +50,11 @@ class MatchDetailsViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        stopMatchDetailsAgent()
     }
 
     private fun observeMatchDetails() {
@@ -97,7 +105,6 @@ class MatchDetailsViewModel @Inject constructor(
     private fun changeMatchStatus() {
         viewModelScope.launch {
             Log.d("MARKO", "tu si $currentMatchId")
-            changeMatchStatus(matchId = currentMatchId ?: "-1")
         }
     }
 

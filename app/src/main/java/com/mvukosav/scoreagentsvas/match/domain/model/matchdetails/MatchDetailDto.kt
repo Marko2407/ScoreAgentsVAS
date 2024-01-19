@@ -39,7 +39,7 @@ data class MatchDetail(
     val oddsAway: Double,
     val oddsDraw: Double,
     val matchPreview: MatchPreviewContent?,
-    val isFavorite: Boolean = true,
+    val isFavorite: Boolean = false,
 )
 
 class MatchDetailsListDTO : ArrayList<MatchDetailDto>()
