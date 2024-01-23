@@ -32,7 +32,7 @@ class AgentsNotificationServiceImpl @Inject constructor(private val context: Con
             .setContentText(content)
             .setContentIntent(activityPendingIntent)
             .build()
-        Log.d("LOLOLO_ANOTIF", "notigikacije")
+        Log.d("AGENT_NOTIFICATION_AGENT", "notifikacije")
         notificationManager.notify(Random.nextInt(), notification)
     }
 

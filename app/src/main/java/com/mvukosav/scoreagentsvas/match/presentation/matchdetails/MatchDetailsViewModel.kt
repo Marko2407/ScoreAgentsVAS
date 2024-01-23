@@ -40,7 +40,7 @@ class MatchDetailsViewModel @Inject constructor(
         savedStateHandle.get<String>("matchId")?.let { matchId ->
             if (matchId != "-1") {
                 //get match and save with this id
-                Log.d("LOLOLO_Match", "MATCH ID : $matchId")
+                Log.d("MATCH", "MATCH ID : $matchId")
                 currentMatchId = matchId
                 startMatchDetailsAgent(matchId)
                 viewModelScope.launch {
@@ -60,7 +60,6 @@ class MatchDetailsViewModel @Inject constructor(
     private fun observeMatchDetails() {
         viewModelScope.launch {
             matchDetails().collectLatest {
-                Log.d("LOLOLO", "Collector matchDetails $it")
                 renderData(it)
             }
         }

@@ -56,7 +56,6 @@ class HomeScreenViewModel @Inject constructor(
     private fun observeLiveScore() {
         viewModelScope.launch {
             livescores().collectLatest {
-                Log.d("LOLOLO_LIVE", "CollectorLIVE $it")
                 renderData(it)
             }
         }
@@ -65,7 +64,6 @@ class HomeScreenViewModel @Inject constructor(
     private fun observeFavorites() {
         viewModelScope.launch {
             favoriteMatches().collectLatest {
-                Log.d("LOLOLO", "Collector for favorites $it")
             }
         }
     }
@@ -114,7 +112,6 @@ class HomeScreenViewModel @Inject constructor(
 
     private fun onMatchClicked(matchId: String) {
         viewModelScope.launch {
-            Log.d("LOLOLO_events", "event $matchId")
             _events.emit(HomeScreenUiEvent.NavigateToMatchDetails(matchId))
         }
     }

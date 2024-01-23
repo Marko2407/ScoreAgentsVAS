@@ -105,7 +105,6 @@ class MatchesRepositoryImpl @Inject constructor(
                 .toFlow()
                 .map { response ->
                     dataToDomainCurrentOffer(response.data?.currentOffer).also {
-                        Log.d("LOLOLO_LIVE_REPO", it.toString())
                         if (it?.isEmpty() == true) {
                             _livescoresMutableFlow.emit(null)
                         } else {
@@ -394,10 +393,10 @@ class LiveScoresDataFetchAgent : Agent() {
                     try {
                         val matches = getLivescore()
                         livescores.emit(matches)
-                        Log.d("LOLOLOLO_AGENT", matches.toString())
+                        Log.d("AGENT_LiveScoresDataFetchAgent", matches.toString())
                         sendMessageToPrematchesDataFetchAgent("Bok refreshao sam LIVESCORE ")
                     } catch (e: Exception) {
-                        Log.e("LiveScoresDataFetchAgent", "Error fetching livescores", e)
+                        Log.e("AGENT_LiveScoresDataFetchAgent", "Error fetching livescores", e)
                     }
                 }
             }
@@ -684,7 +683,7 @@ class FavoriteMatchObserverAgent : Agent() {
 
     private fun sendMessageToNotificationAgent(content: String) {
         val message = ACLMessage(ACLMessage.INFORM)
-        Log.d("LOLOLO_ANOMSG", content)
+        Log.d("AGENT_NOTIFICATION_AGENT", content)
         message.addReceiver(AID("NotificationsAgent", AID.ISLOCALNAME))
         message.content = content
         send(message)
